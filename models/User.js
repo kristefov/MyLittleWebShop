@@ -31,19 +31,11 @@ User.init(
         len: [8],
       },
     },
-    product_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "product",
-        key: "id"
-      }
-  }
-},
+  },
   {
     sequelize,
     freezeTableName: true,
     modelName: "user",
   }
-
 );
 module.export = User;
