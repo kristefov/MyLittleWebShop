@@ -9,9 +9,6 @@ class User extends Model {
   }
 }
 
-class User extends Model {}
-
-
 User.init(
   {
     id: {
@@ -19,13 +16,6 @@ User.init(
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
-    },
-
-
-    username: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      unique: true,
     },
 
     first_name: {
@@ -76,4 +66,3 @@ User.init(
 );
 
 module.exports = User;
-
