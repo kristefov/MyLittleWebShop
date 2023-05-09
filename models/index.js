@@ -13,7 +13,6 @@ Product.belongsTo(Category, {
 // Products belongsTo User
 Product.belongsTo(User, {
   foreignKey: "user_id",
-  onDelete: "SET NULL"
 })
 // Categories have many Products
 Category.hasMany(Product)
