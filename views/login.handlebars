@@ -1,25 +1,43 @@
 <div class="py-5 text-center container">
-<main class="form-signin w-25 m-auto p-3">
-  <form id="loginForm" class="loginForm">
-    
-    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+  <main class="form-signin w-25 m-auto p-3">
+    <form
+      id="loginForm"
+      class="loginForm"
+      action="/api/users/login"
+      method="POST"
+    >
 
-    <div class="form-floating">
-      <input type="email" class="form-control" id="email" placeholder="name@example.com">
-      <label for="floatingInput">Email address</label>
-    </div>
-    <div class="form-floating">
-      <input type="password" class="form-control" id="password" placeholder="Password">
-      <label for="floatingPassword">Password</label>
-    </div>
+      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
-    </div>
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-    <p class="mt-5 mb-3 text-body-secondary">© 2023</p>
-  </form>
-</main>
+      <div class="form-floating">
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          name="email"
+          placeholder="name@example.com"
+        />
+        <label for="floatingInput">Email address</label>
+      </div>
+      <div class="form-floating">
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          name="password"
+          placeholder="Password"
+        />
+        <label for="floatingPassword">Password</label>
+      </div>
+
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me" />
+          Remember me
+        </label>
+      </div>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+      <p class="mt-5 mb-3 text-body-secondary">© 2023</p>
+    </form>
+  </main>
 </div>
