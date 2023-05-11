@@ -27,10 +27,10 @@ router.get("/", withAuth, async (req, res) => {
 
 router.get("/login", async (req, res) => {
   if (req.session.logged_in) {
-    res.redirect("/");
+    res.redirect("/home");
     return;
   }
-  res.render("login");
+  res.render("homepage");
 });
 router.get("/logout", async (req, res) => {
   if (!req.session.logged_in) {
