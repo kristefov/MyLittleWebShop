@@ -5,9 +5,6 @@ const withAuth = require("../utils/withAuth");
 router.get("/", withAuth, async (req, res) => {
   try {
     const productData = await Product.findAll({
-      where: {
-        user_id: req.session.user_id,
-      },
       include: [
         {
           model: User,
@@ -16,7 +13,17 @@ router.get("/", withAuth, async (req, res) => {
       ],
     });
     const products = productData.map(product => product.get({ plain: true }));
+    const thinkabitmorUSERname = await User.findByPk(req.session.user_id);
+
+
+
+
+
     res.render("homepage", {
+     le_idiot:  req.session.user_id,
+     named : thinkabitmorUSERname.first_name,
+     lasted : thinkabitmorUSERname.last_name,
+     mailed: thinkabitmorUSERname.email,
       products,
       logged_in: req.session.logged_in,
     });
@@ -27,10 +34,10 @@ router.get("/", withAuth, async (req, res) => {
 
 router.get("/login", async (req, res) => {
   if (req.session.logged_in) {
-    res.redirect("/home");
+    res.redirect("/");
     return;
   }
-  res.render("homepage");
+  res.render("login");
 });
 router.get("/logout", async (req, res) => {
   if (!req.session.logged_in) {
@@ -54,33 +61,34 @@ router.get("/signup", async (req, res) => {
 
 router.get("/home", async (req, res) => {
   if (!req.session.logged_in) {
-    res.redirect("/");
+    res.redirect("/debil");
     return;
   }
   res.render("homepage", {
-    products,
+   // products,
     logged_in: req.session.logged_in,
   });
 });
 
 router.get("/checkout", async (req, res) => {
-  if (req.session.logged_in) {
+  if (!req.session.logged_in) {
     res.redirect("/");
     return;
   }
   res.render("checkout", {
-    products,
+   // products,
     logged_in: req.session.logged_in,
   });
 });
 router.get("/cart", async (req, res) => {
-  if (req.session.logged_in) {
+  if (!req.session.logged_in) {
     res.redirect("/");
     return;
   }
   res.render("cart", {
-    products,
+  //  products,
     logged_in: req.session.logged_in,
+
   });
 });
 
