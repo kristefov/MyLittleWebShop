@@ -33,6 +33,13 @@ Cart.init(
       }
     },
 
+  },
+  {
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'cart',
   });
 
 module.exports = Cart
