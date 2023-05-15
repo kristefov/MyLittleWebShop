@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const { User, Product, Cart } = require("../../models");
 
-// The `/api/categories` endpoint
 
 router.get("/", async (req, res) => {
   if (req.session.logged_in) {
@@ -52,7 +51,7 @@ router.put("/:id", async (req, res) => {
   try {
     const cartData = await Cart.update(
       {
-        id: req.body.category.id,
+        id: req.body.product.id,
       },
       {
         where: {
