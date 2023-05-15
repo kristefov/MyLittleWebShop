@@ -3,7 +3,7 @@ const { User, Product, Cart } = require("../../models");
 
 
 router.get("/", async (req, res) => {
-  if (req.session.logged_in) {
+    console.log(req.session.logged_in);
     try {
       const cartData = await Cart.findAll({
         include: [
@@ -23,16 +23,16 @@ router.get("/", async (req, res) => {
       res.status(500).json(err);
     }
   }
-});
+);
 
 router.post("/", async (req, res) => {
   
-  if (req.session.logged_in) {
     try {
       const cartData = await Cart.create({
         ...req.body,
         user_id: req.session.user_id,
         product_id: req.body.product.id,
+        session_id: req.session.id
       });
       if (!cartData) {
         res.status(404).send("No Product with that ID");
@@ -43,11 +43,11 @@ router.post("/", async (req, res) => {
       console.error(err);
       res.status(500).json(err);
     }
-  }
+  
 });
 
 router.put("/:id", async (req, res) => {
-    if (req.session.logged_in) {
+    
   try {
     const cartData = await Cart.update(
       {
@@ -66,10 +66,10 @@ router.put("/:id", async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-}});
+});
 
 router.delete("/:id", async (req, res) => {
-    if (req.session.logged_in) {
+   
   try {
     const cartData = await cart.destroy({
       where: {
@@ -83,6 +83,6 @@ router.delete("/:id", async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-}});
+});
 
 module.exports = router;

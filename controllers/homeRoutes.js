@@ -84,7 +84,26 @@ router.get("/cart", async (req, res) => {
   if (!req.session.logged_in) {
     res.redirect("/");
     return;
-  }
+    
+  } else {
+    try {
+      const cartData = await Cart.findAll({
+        include: [
+          {
+            model: User,
+            attributes: ["id"],
+          },
+          {
+            model: Product,
+            attributes: ["id", "product_name", "price", "stock", "category_id"],
+          },
+        ],
+      });
+      res.status(200).json(cartData);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json(err);
+    }}
   res.render("cart", {
   //  products,
     logged_in: req.session.logged_in,
