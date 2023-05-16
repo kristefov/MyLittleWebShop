@@ -16,6 +16,21 @@ const categoryData = [
   {
     category_name: 'Shoes',
   },
+  {
+    category_name:'Jackets and coats',
+  },
+  {
+    category_name:'Sweatshirts',
+  },
+  {
+    category_name:'Waterproofs',
+  },
+  {
+    category_name:'jeans',
+  },
+  {
+    category_name:'Joggers',
+  },
 ];
 
 const seedCategories = () => Category.bulkCreate(categoryData);
