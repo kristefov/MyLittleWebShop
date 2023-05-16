@@ -8,9 +8,8 @@ router.get("/", async (req, res) => {
     const cartData = await Cart.findAll({
       include: [
         {
-          model: { User, Product },
-         // attributes: ["id", "product_name", "price", "stock"],
-         attributes: ["user_id","email","first_name","last_name","cart_id","product_id","quantity","price","stock","product_name","image_url"],
+          model: Product,
+          attributes: ["id", "product_name", "price", "stock"],
         },
       ],
     });
@@ -29,15 +28,15 @@ router.post("/", async (req, res) => {
   try {
 
     const cartData = await Cart.create(req.body, {
-      include: [
-        {
-        model: { User, Product }
       
-    }]
+      include:[{ model:Product}]
+      
     });
    
     res.status(200).json(cartData);
-  } catch (err) {
+    console.log(cartData);
+  } 
+  catch (err) {
     console.error(err);
     res.status(500).json(err);
   }
