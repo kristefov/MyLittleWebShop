@@ -8,7 +8,7 @@ router.post("/:keyword", async (req, res) => {
     const productData = await Product.findAll({
         where: {
             product_name: {
-              [sequelize.Op.like]: `%${search}%`,
+              [sequelizeOP.like]: `%${search}%`,
             },
           },
     });

@@ -17,43 +17,23 @@ const searchHandler = async event => {
    
 
 
-      const response = await fetch("/api/search/"+searchInput, {
-        method: "POST",
-        body: JSON.stringify({ searchInput }),
-        headers: { "Content-Type": "application/json" },
-      });
-      let responseJson = await response.json();
-      if (response.ok) {
-  console.log(response.body);
-  console.log(responseJson);
+
+
         console.log("Searching, redirecting...");
         console.log({input: searchInput})
         let tempvalo =  jQuery("#search").val();
-       //document.location.replace("/search/" + tempvalo);
-       const response2 = await fetch("/search/", {
-        method: "POST",
-        body: JSON.stringify({ searchInput }),
-        headers: { "Content-Type": "application/json" },
-      });
-  
-      } else {
-       // jQuery("#searchSubmit").click();
-        console.log("Error while trying to search");
-        console.log(response.error);
-        console.log(response);
-        alert("Error while trying to search");
-      }
-    
+       document.location.replace("/search/" + tempvalo);
+
     }
   };
   
   document
     .querySelector("#searchForm").addEventListener("submit", searchHandler);
    jQuery(document).ready(function($){
-        $("#search").on("keyup", function() {
+        $("#search2").on("keyup", function() {
           var value = $(this).val().toLowerCase();
           $(".resultbox .col").filter(function() {
-            $(".myhero").css("max-height", "300px");
+            //$(".myhero").css("max-height", "300px");
             $(this).toggle($(this).data('name').toLowerCase().indexOf(value) > -1)
           });
         });

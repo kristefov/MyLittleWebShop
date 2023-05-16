@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { User, Product } = require("../models");
 const withAuth = require("../utils/withAuth");
 const sequelize = require("../config/connection");
-const Op = sequelize.Op;
+const sequelizeOP = require("sequelize").Op; 
 
 router.get("/", withAuth, async (req, res) => {
   try {
@@ -92,16 +92,24 @@ router.get("/cart", async (req, res) => {
 
   });
 });
+
+
+
 router.get("/search/:id", withAuth, async (req, res) => {
   
   const search = req.params.id; 
   const productData = await Product.findAll({
+    where: {
+        product_name: {
+          [sequelizeOP.like]: `%${search}%`,
+        },
+      },
+});
+console.log(productData);
+const products = productData.map(product => product.get({ plain: true }));
+console.log(products);
 
-      prodcut_name: { $like: '%'+req.params.id+'%',    }
-
-  });
-  const products = productData.map(product => product.get({ plain: true }));
-  res.render("search", {
+res.render("search", {
    products,
    search: search,
    user_id: req.session.user_id,
