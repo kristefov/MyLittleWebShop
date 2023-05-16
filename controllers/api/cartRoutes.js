@@ -1,53 +1,42 @@
 const router = require("express").Router();
 const { User, Product, Cart } = require("../../models");
 
-
 router.get("/", async (req, res) => {
-    console.log(req.session.logged_in);
-    try {
-      const cartData = await Cart.findAll({
-        include: [
-          {
-            model: User,
-            attributes: ["id"],
-          },
-          {
-            model: Product,
-            attributes: ["id", "product_name", "price", "stock", "category_id"],
-          },
-        ],
-      });
-      res.status(200).json(cartData);
-    } catch (err) {
-      console.error(err);
-      res.status(500).json(err);
-    }
+  console.log(req.session.logged_in);
+  try {
+    const cartData = await Cart.findAll({
+      include: [
+        {
+          model: Product,
+          attributes: ["id", "product_name", "price", "stock"],
+        },
+      ],
+    });
+    res.status(200).json(cartData);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
   }
-);
+});
 
 router.post("/", async (req, res) => {
-  
-    try {
-      const cartData = await Cart.create({
-        ...req.body,
-        user_id: req.session.user_id,
-        product_id: req.body.product.id,
-        session_id: req.session.id
-      });
-      if (!cartData) {
-        res.status(404).send("No Product with that ID");
-      } else {
-        res.status(200).json(cartData);
-      }
-    } catch (err) {
-      console.error(err);
-      res.status(500).json(err);
-    }
-  
+    
+  try {
+
+    const cartData = await Cart.create({
+      ...req.body,
+      include:[{ model:Product}],
+      
+    });
+    console.log(cartData);
+    res.status(200).json(cartData);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
 });
 
 router.put("/:id", async (req, res) => {
-    
   try {
     const cartData = await Cart.update(
       {
@@ -69,9 +58,8 @@ router.put("/:id", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-   
   try {
-    const cartData = await cart.destroy({
+    const cartData = await Cart.destroy({
       where: {
         id: req.params.id,
       },
