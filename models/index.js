@@ -4,10 +4,7 @@ const Tag = require('./Tag');
 const ProductTag = require('./ProductTag');
 const User = require('./User');
 const Cart = require('./Cart');
-<<<<<<< HEAD
-=======
 
->>>>>>> 30dc35061c3d702a6ccf4200e7b161809aabb423
 
 // Products belongsTo Category
 Product.belongsTo(Category, {
@@ -33,19 +30,8 @@ Tag.belongsToMany(Product, {
 })
 Cart.belongsTo(User, {
   foreignKey: "user_id",
-<<<<<<< HEAD
 })  
-User.hasOne(Cart, {
-  foreignKey: "user_id",
-})
-Product.belongsTo(Cart, {
-  foreignKey: "id",
-})
-Cart.hasMany(Product, {
-  foreignKey: "cart_id",
-})
-=======
-})
+
 User.hasOne(Cart, {
   foreignKey: "user_id",
 })
@@ -58,7 +44,6 @@ Cart.hasMany(Product, {
   foreignKey: "product_id",
 })
 
->>>>>>> 30dc35061c3d702a6ccf4200e7b161809aabb423
 
 module.exports = {
   Product,
