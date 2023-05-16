@@ -31,13 +31,17 @@ Tag.belongsToMany(Product, {
 Cart.belongsTo(User, {
   foreignKey: "user_id",
 })
-User.hasOne(Cart)
+User.hasOne(Cart, {
+  foreignKey: "user_id",
+})
 
 Product.belongsToMany(Cart, {
   through: Cart,
   foreignKey: "product_id",
   })
-Cart.hasMany(Product)
+Cart.hasMany(Product, {
+  foreignKey: "product_id",
+})
 
 
 module.exports = {

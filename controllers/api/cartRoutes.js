@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { User, Product, Cart } = require("../../models");
 
 router.get("/", async (req, res) => {
-  console.log(req.session.logged_in);
+  
   try {
     const cartData = await Cart.findAll({
       include: [
@@ -12,7 +12,9 @@ router.get("/", async (req, res) => {
         },
       ],
     });
+    console.log(cartData);
     res.status(200).json(cartData);
+
   } catch (err) {
     console.error(err);
     res.status(500).json(err);
@@ -23,12 +25,12 @@ router.post("/", async (req, res) => {
     
   try {
 
-    const cartData = await Cart.create({
-      ...req.body,
-      include:[{ model:Product}],
+    const cartData = await Cart.create(req.body, {
+      
+      include:[{ model:Product}]
       
     });
-    console.log(cartData);
+   
     res.status(200).json(cartData);
   } catch (err) {
     console.error(err);
