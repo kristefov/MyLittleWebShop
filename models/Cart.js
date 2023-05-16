@@ -35,9 +35,16 @@ Cart.init(
       }
     },
 
+<<<<<<< HEAD
   }, {
     sequelize,
     timestamps: true,
+=======
+  },
+  {
+    sequelize,
+    timestamps: false,
+>>>>>>> 30dc35061c3d702a6ccf4200e7b161809aabb423
     freezeTableName: true,
     underscored: true,
     modelName: 'cart',

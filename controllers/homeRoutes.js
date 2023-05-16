@@ -14,18 +14,14 @@ router.get("/", withAuth, async (req, res) => {
         },
       ],
     });
-    const products = productData.map(product => product.get({ plain: true }));
+    const products = productData.map((product) => product.get({ plain: true }));
     const thinkabitmorUSERname = await User.findByPk(req.session.user_id);
 
-
-
-
-
     res.render("homepage", {
-     le_idiot:  req.session.user_id,
-     named : thinkabitmorUSERname.first_name,
-     lasted : thinkabitmorUSERname.last_name,
-     mailed: thinkabitmorUSERname.email,
+      le_idiot: req.session.user_id,
+      named: thinkabitmorUSERname.first_name,
+      lasted: thinkabitmorUSERname.last_name,
+      mailed: thinkabitmorUSERname.email,
       products,
       logged_in: req.session.logged_in,
     });
@@ -66,7 +62,7 @@ router.get("/home", async (req, res) => {
     return;
   }
   res.render("homepage", {
-   // products,
+    // products,
     logged_in: req.session.logged_in,
   });
 });
@@ -77,7 +73,7 @@ router.get("/checkout", async (req, res) => {
     return;
   }
   res.render("checkout", {
-   // products,
+    // products,
     logged_in: req.session.logged_in,
   });
 });
@@ -85,12 +81,27 @@ router.get("/cart", async (req, res) => {
   if (!req.session.logged_in) {
     res.redirect("/");
     return;
+  } else {
+    try {
+      const cartData = await Cart.findAll({
+        include: [
+          {
+            model: Product,
+            attributes: ["id", "product_name", "price", "stock"],
+          },
+        ],
+      });
+      const carts = cartData.map((cart) => cart.get({ plain: true }));
+      res.render("cart", {
+        user_id: req.session.user_id,
+        carts,
+        logged_in: req.session.logged_in,
+      });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json(err);
+    }
   }
-  res.render("cart", {
-  //  products,
-    logged_in: req.session.logged_in,
-
-  });
 });
 
 
