@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const { User, Product } = require("../models");
 const withAuth = require("../utils/withAuth");
+const sequelize = require("../config/connection");
+const Op = sequelize.Op;
 
 router.get("/", withAuth, async (req, res) => {
   try {
@@ -45,12 +47,11 @@ router.get("/logout", async (req, res) => {
     return;
   } else {
     req.session.destroy(() => {
-      res.redirect("/login");
+      res.status(200).redirect("/login");
     });
   }
   //res.render('login');
 });
-
 router.get("/signup", async (req, res) => {
   if (req.session.logged_in) {
     res.redirect("/");
@@ -91,5 +92,21 @@ router.get("/cart", async (req, res) => {
 
   });
 });
+router.get("/search/:id", withAuth, async (req, res) => {
+  
+  const search = req.params.id; 
+  const productData = await Product.findAll({
 
+      prodcut_name: { $like: '%'+req.params.id+'%',    }
+
+  });
+  const products = productData.map(product => product.get({ plain: true }));
+  res.render("search", {
+   products,
+   search: search,
+   user_id: req.session.user_id,
+    logged_in: req.session.logged_in,
+
+  });
+});
 module.exports = router;

@@ -20,7 +20,9 @@ const loginFormHandler = async event => {
     });
 
     if (response.ok) {
-      document.location.replace("/home");
+      console.log("Logged in, redirecting...");
+      document.location.replace("/");
+
     } else {
       alert("Failed to log in");
     }

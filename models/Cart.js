@@ -20,6 +20,7 @@ Cart.init(
       },
     user_id: {
       type: DataTypes.INTEGER,
+      foreignKey: true,
       references: {
         model: 'user',
         key: 'id',
@@ -27,12 +28,19 @@ Cart.init(
     },
     product_id: {
       type: DataTypes.INTEGER,
+      foreignKey: true,
       references: {
         model: 'product',
         key: 'id',
       }
     },
 
+  }, {
+    sequelize,
+    timestamps: true,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'cart',
   });
 
 module.exports = Cart
