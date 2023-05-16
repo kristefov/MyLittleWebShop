@@ -17,6 +17,12 @@ const userData = [
     "first_name": "Kristiyan2",
     "last_name": "Tefov2",
     "password": "123456789Kris"
+  },
+  {
+    "email": "kris@kris.com",
+    "first_name": "Kristiyan",
+    "last_name": "Tefov",
+    "password": "123456789"
   }
 ]
 
