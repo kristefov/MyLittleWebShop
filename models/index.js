@@ -38,15 +38,6 @@ User.hasOne(Cart, {
   foreignKey: "user_id",
 })
 
-Product.belongsToMany(Cart, {
-  through: Cart,
-  foreignKey: "product_id",
-  })
-
-Cart.hasMany(Product, {
-  foreignKey: "product_id",
-})
-
 Cart.belongsToMany(Product, {
   through: CartProduct,
   foreignKey: 'cart_id',
