@@ -31,6 +31,42 @@ const categoryData = [
   {
     category_name:'Joggers',
   },
+  {
+    category_name:'Swim shorts',
+  },
+  {
+    category_name:'Trousers',
+  },
+  {
+    category_name:'Backpacks and rucksacks',
+  },
+  {
+    category_name:'Gloves',
+  },
+  {
+    category_name:'Mens watches',
+  },
+  {
+    category_name:'polo shirts',
+  },
+  {
+    category_name:'Vests',
+  },
+  {
+    category_name:'Socks',
+  },
+  {
+    category_name:'underwear',
+  },
+  {
+    category_name:'Sports equipment',
+  },
+  {
+    category_name:'training and gym equipment',
+  },
+  {
+    category_name:'Water bottles and hydration',
+  }
 ];
 
 const seedCategories = () => Category.bulkCreate(categoryData);
