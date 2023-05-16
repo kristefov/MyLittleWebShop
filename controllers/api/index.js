@@ -6,7 +6,7 @@ const userRoutes = require("./userRoutes");
 
 const searchRoutes = require("./searchRoutes");
 const cartRoutes = require("./cartRoutes");
-router.use("/cart", cartRoutes);
+//router.use("/cart", cartRoutes);
 router.use("/search", searchRoutes);
 
 

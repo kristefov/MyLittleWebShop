@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User, Product } = require("../models");
+const { Cart, User, Product } = require("../models");
 const withAuth = require("../utils/withAuth");
 const sequelize = require("../config/connection");
 const sequelizeOP = require("sequelize").Op; 
@@ -67,15 +67,25 @@ router.get("/home", async (req, res) => {
   });
 });
 
-router.get("/checkout", async (req, res) => {
-  if (!req.session.logged_in) {
-    res.redirect("/");
-    return;
-  }
+router.get("/checkout", withAuth, async (req, res) => {
+  const thinkabitmorUSERname = await User.findByPk(req.session.user_id);
+  try {
+    const cartData = await Cart.findAll({
+      include: [
+        {
+          model: Product,
+          attributes: ["user_id","email","first_name","last_name","cart_id","product_id","quantity","price","stock","product_name","image_url"],
+        },
+      ],
+    });
+    const cartItems = cartData.map((product) => product.get({ plain: true }));
   res.render("checkout", {
-    // products,
+    cartItems,
     logged_in: req.session.logged_in,
   });
+  } catch (error) {
+    res.status(500).json(error);
+  }
 });
 router.get("/cart", async (req, res) => {
   if (!req.session.logged_in) {
