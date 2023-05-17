@@ -49,7 +49,7 @@ router.get("/logout", async (req, res) => {
   }
   
 });
-router.get("/signup", async (req, res) => {
+router.get("/signup", withAuth, async (req, res) => {
   if (req.session.logged_in) {
     res.redirect("/");
     return;
@@ -57,7 +57,7 @@ router.get("/signup", async (req, res) => {
   res.render("signUp");
 });
 
-router.get("/update-e", async (req, res) => {
+router.get("/update-e", withAuth, async (req, res) => {
   if (req.session.logged_in) {
     const userData = await User.findByPk(req.session.user_id);
     res.render("update-email", {
