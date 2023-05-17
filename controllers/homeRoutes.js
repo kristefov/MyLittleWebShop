@@ -14,6 +14,17 @@ router.get("/", withAuth, async (req, res) => {
         },
       ],
     });
+<<<<<<< HEAD
+    const products = productData.map(product => product.get({ plain: true }));
+    const thinkabitmorUSERname = await User.findByPk(req.user.id);
+    // const thinkabitmorUSERname = await User.findByPk(req.session.user_id);
+
+    res.render("homepage", {
+      le_idiot: req.session.user_id,
+      named: thinkabitmorUSERname.first_name,
+      lasted: thinkabitmorUSERname.last_name,
+      mailed: thinkabitmorUSERname.email,
+=======
     const products = productData.map((product) => product.get({ plain: true }));
     const userData = await User.findByPk(req.session.user_id);
 
@@ -22,6 +33,7 @@ router.get("/", withAuth, async (req, res) => {
       named: userData.first_name,
       lasted: userData.last_name,
       mailed: userData.email,
+>>>>>>> fb8ba8edf20f23cf13a135c4fa3b21beacc94588
       products,
       logged_in: req.session.logged_in,
     });
@@ -31,7 +43,7 @@ router.get("/", withAuth, async (req, res) => {
 });
 
 router.get("/login", async (req, res) => {
-  if (req.session.logged_in) {
+  if (req.cookies.access_token) {
     res.redirect("/");
     return;
   }
@@ -39,12 +51,17 @@ router.get("/login", async (req, res) => {
 });
 
 router.get("/logout", async (req, res) => {
-  if (!req.session.logged_in) {
+  if (!req.cookies.access_token) {
     res.redirect("/login");
     return;
   } else {
     req.session.destroy(() => {
+<<<<<<< HEAD
+      res.clearCookie("access_token");
+      res.redirect("/login");
+=======
       res.status(200).redirect("/login");
+>>>>>>> fb8ba8edf20f23cf13a135c4fa3b21beacc94588
     });
   }
 });
@@ -128,6 +145,10 @@ router.get("/cart", async (req, res) => {
       res.status(500).json(err);
     }
   }
+<<<<<<< HEAD
+  res.render("cart", {
+    //  products,
+=======
 });
 
 router.get("/search/:id", withAuth, async (req, res) => {
@@ -147,6 +168,7 @@ router.get("/search/:id", withAuth, async (req, res) => {
     products,
     search: search,
     user_id: req.session.user_id,
+>>>>>>> fb8ba8edf20f23cf13a135c4fa3b21beacc94588
     logged_in: req.session.logged_in,
   });
 });
