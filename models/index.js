@@ -46,13 +46,7 @@ Product.belongsToMany(Cart, {
   through: CartProduct,
   foreignKey: "product_id",
 });
-Cart.hasMany(Product, {
-  foreignKey: "cart_id",
-  onDelete: "CASCADE", // optional, specify the delete behavior
-});
-Product.belongsTo(Cart, {
-  foreignKey: "cart_id",
-});
+
 
 module.exports = {
   Product,
@@ -61,4 +55,5 @@ module.exports = {
   ProductTag,
   User,
   Cart,
+  CartProduct,
 };

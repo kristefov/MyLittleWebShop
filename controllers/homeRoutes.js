@@ -105,22 +105,22 @@ router.get("/checkout", async (req, res) => {
 });
 router.get("/cart", async (req, res) => {
   if (!req.session.logged_in) {
+
     res.redirect("/");
     return;
   } else {
     try {
-      const cartData = await Cart.findAll({
+      const cartData = await Cart.findByPk(req.session.cart_id, {
         include: [
           {
             model: Product,
-            attributes: ["id", "product_name", "price", "stock"],
           },
         ],
       });
-      const carts = cartData.map((cart) => cart.get({ plain: true }));
+      const cart = cartData.get({ plain: true });
       res.render("cart", {
         user_id: req.session.user_id,
-        carts,
+        cart,
         logged_in: req.session.logged_in,
       });
     } catch (err) {

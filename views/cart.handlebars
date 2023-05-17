@@ -13,25 +13,24 @@
           <th>Actions</th>
         </tr>
       </thead>
+      
       <tbody class="table-group-divider">
+          {{#each cart.products as |product|}}
         <tr class="table-primary">
           <td scope="row">Item</td>
+          <td>{{product.product_name}}</td>
+          <td>{{product.image}}</td>
           <td>Item</td>
           <td>Item</td>
-          <td>Item</td>
-          <td>Item</td>
+          <td><button data-product="{{product.id}}" class="btn btn-outline-secondary clearCartBtn">Clear Cart</button></td>
         </tr>
-        <tr class="table-primary">
-          <td scope="row">Item</td>
-          <td>Item</td>
-          <td>Item</td>
-          <td>Item</td>
-          <td>Item</td>
-        </tr>
+        {{/each}}
+       
       </tbody>
       <tfoot>
 
       </tfoot>
     </table>
   </div>
+  <button class="btn btn-outline-secondary clearCartBtn">Clear Cart</button>
 </main>

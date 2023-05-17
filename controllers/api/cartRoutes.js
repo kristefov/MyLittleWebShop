@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { Op } = require("sequelize");
 const { User, Product, Cart, CartProduct } = require("../../models");
 
 router.get("/", async (req, res) => {
@@ -23,9 +24,7 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   console.log(req);
   try {
-    const cartData = await Cart.create(req.body, {
-      include: [{ model: Product }],
-    });
+    const cartData = await Cart.create(req.body);
 
     res.status(200).json(cartData);
     console.log(cartData);
@@ -35,23 +34,53 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.put("/:id", async (req, res) => {
+router.post("/products", async (req, res) => {
   try {
-    const cartData = await Cart.update(
-      {
-        id: req.body.product.id,
-      },
-      {
-        where: {
-          id: req.params.id,
-        },
-      }
-    );
-    if (!cartData) {
-      res.status(400).send("No product with that ID");
+    if (!Array.isArray(req.body)) {
+      res.status(400).send("No product ID provided");
+      return;
     }
-    res.status(200).json(cartData);
+    const cartData = await Cart.findByPk(req.session.cart_id);
+    if (!cartData) {
+      res.status(404).send("No product with that ID");
+      return;
+    }
+    const cartProducts = await CartProduct.bulkCreate(
+      req.body.map((product_id) => ({
+        product_id,
+        cart_id: cartData.id,
+      }))
+    );
+    res.status(200).json(cartProducts);
   } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+});
+
+
+router.delete("/products", async (req, res) => {
+  try {
+    if (!Array.isArray(req.body)) {
+      res.status(400).send("No product ID provided");
+      return;
+    }
+    const cartData = await Cart.findByPk(req.session.cart_id);
+    if (!cartData) {
+      res.status(404).send("No product with that ID");
+      return;
+    }
+    const cartProducts = await CartProduct.destroy({
+      where: {
+        product_id: {
+          [Op.in]: req.body,
+        },
+        cart_id: cartData.id,
+      },
+    });
+    res.status(200).json(cartProducts);
+  } catch (err) {
+    console.error(err);
     res.status(500).json(err);
   }
 });
@@ -71,5 +100,6 @@ router.delete("/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 
 module.exports = router;

@@ -1,9 +1,7 @@
-const CartHandler = async function(event) {
-  // Stop the browser from submitting the form so we can do so with JavaScript
-  event.preventDefault();
+const cartDeleteHandler = async function(event) {
+    event.preventDefault();
 
-  // Gather the data from the form elements on the page
-  const productID = parseInt(this.dataset.product);
+    const productID = parseInt(this.dataset.product);
 console.log(productID);
   if (productID) {
     // Send the e-mail and password to the server
@@ -13,7 +11,7 @@ console.log(productID);
     // post to /login qithout fetch
 
     const response = await fetch("/api/cart/products", {
-      method: "POST",
+      method: "DELETE",
       body: JSON.stringify([productID]),
       headers: { "Content-Type": "application/json" },
     });
@@ -23,12 +21,12 @@ console.log(productID);
 
       document.location.replace("/cart");
     } else {
-      alert("Failed to add to cart");
+      alert("Failed to delete from cart");
     }
   }
 };
 
-document.querySelectorAll(".addtocart").forEach( (button) => {
-  console.log(button);
-button.addEventListener("click", CartHandler);
-})
+document.querySelectorAll(".clearCartBtn").forEach( (button) => {
+    console.log(button);
+  button.addEventListener("click", cartDeleteHandler);
+  })

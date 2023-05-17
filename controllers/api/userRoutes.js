@@ -1,11 +1,18 @@
 const router = require("express").Router();
-const User = require("../../models/User");
+const { User, Cart } = require("../../models");
 
 // POST create a new user
 router.post("/register", async (req, res) => {
   try {
     const userData = await User.create(req.body);
+    
+    const cartData = await Cart.create({
+      user_id: userData.id,
+      session_id: req.session.id,
+      
+    });
     req.session.save(() => {
+      req.session.cart_id = cartData.id;
       req.session.user_id = userData.id;
       req.session.logged_in = true;
       res.status(200).json({
@@ -23,7 +30,10 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     console.log(req.body);
-    const userData = await User.findOne({ where: { email: req.body.email } });
+    const userData = await User.findOne({
+      where: { email: req.body.email },
+      include: { model: Cart },
+    });
 
     if (!userData) {
       res
@@ -44,6 +54,7 @@ router.post("/login", async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
       req.session.searched = false;
+      req.session.cart_id = userData.cart.id;
       res.status(200).json({
         logged_in: true,
         user: userData,
@@ -79,7 +90,7 @@ router.put("/", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const userData = await User.findAll({
-      
+      include: Cart,
     });
     if (!userData) {
       res.status(404).json({ message: "No user with this id!" });
@@ -92,7 +103,7 @@ router.get("/", async (req, res) => {
 });
 // GET one user
 router.get("/:id", async (req, res) => {
-  console.log(req)
+  console.log(req);
   try {
     const userData = await User.findByPk(req.params.id);
     if (!userData) {
