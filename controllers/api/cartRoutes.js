@@ -1,13 +1,10 @@
-
 const router = require("express").Router();
 const { User, Product, Cart, CartProduct } = require("../../models");
 
 router.get("/", async (req, res) => {
-  
   try {
     const cartData = await Cart.findAll({
       include: [
-       
         {
           model: Product,
           attributes: ["id", "product_name", "price", "stock"],
@@ -15,9 +12,8 @@ router.get("/", async (req, res) => {
       ],
     });
     const cartItems = cartData.map((product) => product.get({ plain: true }));
-   
-    res.status(200).json(cartItems);
 
+    res.status(200).json(cartItems);
   } catch (err) {
     console.error(err);
     res.status(500).json(err);
@@ -25,19 +21,15 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-    console.log(req)
+  console.log(req);
   try {
-
     const cartData = await Cart.create(req.body, {
-      
-      include:[{ model:Product}]
-      
+      include: [{ model: Product }],
     });
-   
+
     res.status(200).json(cartData);
     console.log(cartData);
-  } 
-  catch (err) {
+  } catch (err) {
     console.error(err);
     res.status(500).json(err);
   }
@@ -81,4 +73,3 @@ router.delete("/:id", async (req, res) => {
 });
 
 module.exports = router;
-

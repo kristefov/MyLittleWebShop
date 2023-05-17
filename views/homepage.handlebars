@@ -1,50 +1,70 @@
 <main>
-  <div class="position-relative overflow-hidden p-3 p-md-5 mb-3 text-center bg-body-tertiary">
-    <div class="col-md-5 p-lg-5 mx-auto my-5">
+  <div
+    class="position-relative overflow-hidden viewhero p-1 mb-1 mt-1 text-center"
+  >
+    <div>
       <h1 class="display-4 fw-normal">MyLittleWebShop</h1>
-      <p class="lead fw-normal">Spinup a quick self-hosted ecom store</p>
-      <a class="btn btn-outline-secondary" href="#">See what we can do !</a>
+      <p class="lead fw-normal">Spinup a quick self-hosted little web shop</p>
     </div>
     <div class="product-device shadow-sm d-none d-md-block"></div>
-    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+    <div
+      class="product-device product-device-2 shadow-sm d-none d-md-block"
+    ></div>
   </div>
 
-
-<div class="album py-5 bg-body-tertiary">
+  <div class="album py-5 bg-body-tertiary">
     <div class="container">
 
       <div class="resultbox row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-  
 
-    {{#each products as |product|}}
+        {{#each products as |product|}}
 
-                <div class="col" data-name="{{product.product_name}}" data-price="{{product.price}}">
-          <div class="card shadow-sm">
-           <img class="card-img-top" src="{{product.image}}">   
-            <div class="card-body">
-              <h5 class="card-text">{{product.product_name}}</h5>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary"><b> £{{product.price}} </b></button>
-                <button type="submit" data-product="{{product.id}}" class="btn addtocart btn-sm btn-outline-secondary">ADD TO CART  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
-  <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
-  <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-</svg> </button>
+          <div
+            class="col"
+            data-name="{{product.product_name}}"
+            data-price="{{product.price}}"
+          >
+            <div class="card shadow-sm">
+              <img class="card-img-top" src="{{product.image}}" />
+              <div class="card-body">
+                <h5 class="card-text">{{product.product_name}}</h5>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-outline-secondary"
+                    ><b> £{{product.price}} </b></button>
+                    <button
+                      type="submit"
+                      data-product="{{product.id}}"
+                      class="btn addtocart btn-sm btn-outline-secondary"
+                    >ADD TO CART
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-cart-plus"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"
+                        />
+                        <path
+                          d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                  <small class="text-body-secondary"> {{product.stock}} </small>
                 </div>
-                <small class="text-body-secondary">   {{product.stock}} </small>
               </div>
             </div>
           </div>
-        </div>
-    {{/each}}
+        {{/each}}
 
       </div>
     </div>
   </div>
 
-  
-
-  
-
-  
 </main>
