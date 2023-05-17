@@ -13,7 +13,11 @@ router.post("/register", async (req, res) => {
       res.status(200).json({
         logged_in: true,
         user: userData,
+<<<<<<< HEAD
         message: "You are now registered!",
+=======
+        message: "You are now logged in!",
+>>>>>>> fb8ba8edf20f23cf13a135c4fa3b21beacc94588
       });
     });
   } catch (err) {
@@ -57,11 +61,18 @@ router.post("/login", async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
+<<<<<<< HEAD
 
       res.status(200).json({
         logged_in: true,
         user: userData,
         token,
+=======
+      req.session.searched = false;
+      res.status(200).json({
+        logged_in: true,
+        user: userData,
+>>>>>>> fb8ba8edf20f23cf13a135c4fa3b21beacc94588
         message: "You are now logged in!",
       });
     });

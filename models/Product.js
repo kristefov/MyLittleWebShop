@@ -18,14 +18,14 @@ Product.init(
     },
     image: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: true,
     },
     product_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     price: {
-      type: DataTypes.DECIMAL(10,2),
+      type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
       validate: {
         isDecimal: true,
@@ -36,29 +36,27 @@ Product.init(
       allowNull: false,
       is: 10,
       validate: {
-        isNumeric: true
-      }
+        isNumeric: true,
+      },
     },
     category_id: {
       type: DataTypes.INTEGER,
       references: {
         model: "category",
-        key: "id"
-      }
+        key: "id",
+      },
     },
-     user_id: {
-        type: DataTypes.INTEGER,
+    user_id: {
+      type: DataTypes.INTEGER,
       references: {
         model: "user",
-        key: "id"
-      }
-
-      
-    }
+        key: "id",
+      },
+    },
   },
   {
     sequelize,
-    timestamps: false,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
     modelName: "product",

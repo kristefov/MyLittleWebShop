@@ -1,6 +1,10 @@
 const router = require("express").Router();
 const { Product, Category, Tag, ProductTag } = require("../../models");
+<<<<<<< HEAD
 const passport = require("passport");
+=======
+
+>>>>>>> fb8ba8edf20f23cf13a135c4fa3b21beacc94588
 // The `/api/products` endpoint
 
 // get all products
@@ -36,6 +40,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // create new product
+<<<<<<< HEAD
 router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
@@ -44,6 +49,10 @@ router.post(
       return res.status(403).send("You are not authorized");
     }
     /* req.body should look like this...
+=======
+router.post("/", (req, res) => {
+  /* req.body should look like this...
+>>>>>>> fb8ba8edf20f23cf13a135c4fa3b21beacc94588
     {
       product_name: "Basketball",
       price: 200.00,

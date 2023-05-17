@@ -1,0 +1,28 @@
+<main data-searchterm="{{search}}">
+
+<div class="album py-5 bg-body-tertiary">
+    <div class="container" >
+
+      <div class="resultbox row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+
+    {{#each products as |product|}}
+    
+    {{> product-item }}
+
+    {{/each}}
+
+</section>
+
+
+
+      </div>
+    </div>
+  </div>
+
+  
+
+  
+
+  
+</main>
