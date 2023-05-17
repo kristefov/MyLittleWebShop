@@ -10,6 +10,7 @@ require("./utils/passport");
 const cookieParser = require("cookie-parser");
 const helpers = require("./utils/helpers");
 const routes = require("./controllers");
+const { createToken } = require("./utils/jwt");
 // const helpers = require("./util/helpers");
 const app = express();
 const PORT = process.env.PORT || 3001;
