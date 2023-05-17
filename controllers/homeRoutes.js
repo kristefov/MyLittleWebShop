@@ -152,9 +152,23 @@ router.get("/search/:id", withAuth, async (req, res) => {
 });
 
 router.get("/about-us", async (req, res) => {
-  res.render("about-us");
+  const userData = await User.findByPk(req.session.user_id);
+  res.render("about-us" , {
+    named: userData.first_name,
+    logged_in: req.session.logged_in,
+    user_id: req.session.user_id,
+    lasted: userData.last_name,
+    
+  });
 });
 router.get("/contact-us", async (req, res) => {
-  res.render("contact-us");
+  const userData = await User.findByPk(req.session.user_id);
+  res.render("contact-us", {
+    named: userData.first_name,
+    logged_in: req.session.logged_in,
+    user_id: req.session.user_id,
+    lasted: userData.last_name,
+   
+  });
 });
 module.exports = router;
