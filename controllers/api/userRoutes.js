@@ -1,5 +1,7 @@
 const router = require("express").Router();
 const User = require("../../models/User");
+const jwt = require("jsonwebtoken");
+const { createToken } = require("../../utils/jwt");
 
 // POST create a new user
 router.post("/register", async (req, res) => {
@@ -8,7 +10,15 @@ router.post("/register", async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-      res.status(200).json({ logged_in: true, user: userData, message: 'You are now logged in!' });
+      res.status(200).json({
+        logged_in: true,
+        user: userData,
+<<<<<<< HEAD
+        message: "You are now registered!",
+=======
+        message: "You are now logged in!",
+>>>>>>> fb8ba8edf20f23cf13a135c4fa3b21beacc94588
+      });
     });
   } catch (err) {
     res.status(400).json(err);
@@ -36,13 +46,37 @@ router.post("/login", async (req, res) => {
         .json({ message: "Incorrect email or password, please try again" });
       return;
     }
+
+    const token = createToken(userData);
+    res.cookie("access_token", token, {
+      httpOnly: true,
+    });
+    // const token = jwt.sign(
+    //   { id: userData.id, email: userData.email, isAdmin: userData.isAdmin },
+    //   process.env.JWT
+    // );
+    // res.cookie("access_token", token, {
+    //   httpOnly: true,
+    // });
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
+<<<<<<< HEAD
+
+      res.status(200).json({
+        logged_in: true,
+        user: userData,
+        token,
+=======
       req.session.searched = false;
-      res.status(200).json({ logged_in: true, user: userData, message: 'You are now logged in!' });
+      res.status(200).json({
+        logged_in: true,
+        user: userData,
+>>>>>>> fb8ba8edf20f23cf13a135c4fa3b21beacc94588
+        message: "You are now logged in!",
+      });
     });
-   // res.json({ user: userData, message: "You are now logged in!" });
+    // res.json({ user: userData, message: "You are now logged in!" });
   } catch (err) {
     res.status(400).json(err);
   }
