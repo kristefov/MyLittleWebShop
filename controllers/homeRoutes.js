@@ -1,8 +1,8 @@
 const router = require("express").Router();
-const { User, Product ,Cart} = require("../models");
+const { User, Product, Cart } = require("../models");
 const withAuth = require("../utils/withAuth");
 const sequelize = require("../config/connection");
-const sequelizeOP = require("sequelize").Op; 
+const sequelizeOP = require("sequelize").Op;
 
 router.get("/", withAuth, async (req, res) => {
   try {
@@ -47,9 +47,8 @@ router.get("/logout", async (req, res) => {
       res.status(200).redirect("/login");
     });
   }
-  
 });
-router.get("/signup", withAuth, async (req, res) => {
+router.get("/signup", async (req, res) => {
   if (req.session.logged_in) {
     res.redirect("/");
     return;
@@ -68,10 +67,9 @@ router.get("/update-e", withAuth, async (req, res) => {
       mailed: userData.email,
     });
   }
-  
 });
 
-router.get("/update-p", async (req, res) => {
+router.get("/update-p", withAuth, async (req, res) => {
   if (req.session.logged_in) {
     const userData = await User.findByPk(req.session.user_id);
     res.render("update-password", {
@@ -82,7 +80,6 @@ router.get("/update-p", async (req, res) => {
       mailed: userData.email,
     });
   }
-  
 });
 
 router.get("/home", async (req, res) => {
@@ -133,35 +130,31 @@ router.get("/cart", async (req, res) => {
   }
 });
 
-
-
 router.get("/search/:id", withAuth, async (req, res) => {
-  
-  const search = req.params.id; 
+  const search = req.params.id;
   const productData = await Product.findAll({
     where: {
-        product_name: {
-          [sequelizeOP.like]: `%${search}%`,
-        },
+      product_name: {
+        [sequelizeOP.like]: `%${search}%`,
       },
-});
-console.log(productData);
-const products = productData.map(product => product.get({ plain: true }));
-console.log(products);
+    },
+  });
+  console.log(productData);
+  const products = productData.map((product) => product.get({ plain: true }));
+  console.log(products);
 
-res.render("search", {
-   products,
-   search: search,
-   user_id: req.session.user_id,
+  res.render("search", {
+    products,
+    search: search,
+    user_id: req.session.user_id,
     logged_in: req.session.logged_in,
-
   });
 });
 
 router.get("/about-us", async (req, res) => {
-res.render("about-us")
-})
+  res.render("about-us");
+});
 router.get("/contact-us", async (req, res) => {
-  res.render("contact-us")
-  })
+  res.render("contact-us");
+});
 module.exports = router;
