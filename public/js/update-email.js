@@ -19,6 +19,4 @@ const updateEmailHandler = async (event) => {
   }
 };
 
-document
-  .querySelector(".updateEmail")
-  .addEventListener("submit", updateEmailHandler);
+document.querySelector("#updateEmailBtn").addEventListener("submit", updateEmailHandler);

@@ -28,4 +28,4 @@ const regHandler = async (event) => {
   }
 };
 
-document.querySelector(".signupForm").addEventListener("submit", regHandler);
+document.querySelector("#signupForm").addEventListener("submit", regHandler);

@@ -1,4 +1,4 @@
-const updateEmailHandler = async (event) => {
+const updatePasswordHandler = async (event) => {
   // Stop the browser from submitting the form so we can do so with JavaScript
   event.preventDefault();
 
@@ -19,6 +19,4 @@ const updateEmailHandler = async (event) => {
   }
 };
 
-document
-  .querySelector(".updatePassword")
-  .addEventListener("submit", updateEmailHandler);
+document.getElementById("updatePasswordBtn").addEventListener("submit", updatePasswordHandler);

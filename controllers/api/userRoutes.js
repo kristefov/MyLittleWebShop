@@ -57,17 +57,19 @@ router.post("/login", async (req, res) => {
 });
 
 // PUT update a user
-router.put("/:id", async (req, res) => {
+router.put("/", async (req, res) => {
+  console.log(req.session);
   try {
     const userData = await User.update(req.body, {
       where: {
-        id: req.params.id,
+        id: req.session.user_id,
       },
     });
     if (!userData[0]) {
       res.status(404).json({ message: "No user with this id!" });
       return;
     }
+    console.log(userData);
     res.status(200).json(userData);
   } catch (err) {
     res.status(500).json(err);
@@ -77,7 +79,7 @@ router.put("/:id", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const userData = await User.findAll({
-      attributes: { exclude: ["password"] },
+      
     });
     if (!userData) {
       res.status(404).json({ message: "No user with this id!" });
@@ -90,6 +92,7 @@ router.get("/", async (req, res) => {
 });
 // GET one user
 router.get("/:id", async (req, res) => {
+  console.log(req)
   try {
     const userData = await User.findByPk(req.params.id);
     if (!userData) {
@@ -97,6 +100,7 @@ router.get("/:id", async (req, res) => {
       return;
     }
     res.status(200).json(userData);
+    console.log(userData);
   } catch (err) {
     res.status(500).json(err);
   }
