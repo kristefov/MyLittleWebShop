@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User, Product } = require("../models");
+const { User, Product ,Cart} = require("../models");
 const withAuth = require("../utils/withAuth");
 const sequelize = require("../config/connection");
 const sequelizeOP = require("sequelize").Op; 
@@ -15,13 +15,13 @@ router.get("/", withAuth, async (req, res) => {
       ],
     });
     const products = productData.map((product) => product.get({ plain: true }));
-    const thinkabitmorUSERname = await User.findByPk(req.session.user_id);
+    const userData = await User.findByPk(req.session.user_id);
 
     res.render("homepage", {
-      le_idiot: req.session.user_id,
-      named: thinkabitmorUSERname.first_name,
-      lasted: thinkabitmorUSERname.last_name,
-      mailed: thinkabitmorUSERname.email,
+      user_id: req.session.user_id,
+      named: userData.first_name,
+      lasted: userData.last_name,
+      mailed: userData.email,
       products,
       logged_in: req.session.logged_in,
     });
@@ -54,6 +54,34 @@ router.get("/signup", async (req, res) => {
     return;
   }
   res.render("signUp");
+});
+
+router.get("/update-e", async (req, res) => {
+  if (req.session.logged_in) {
+    const userData = await User.findByPk(req.session.user_id);
+    res.render("update-email", {
+      named: userData.first_name,
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
+      lasted: userData.last_name,
+      mailed: userData.email,
+    });
+  }
+  
+});
+
+router.get("/update-p", async (req, res) => {
+  if (req.session.logged_in) {
+    const userData = await User.findByPk(req.session.user_id);
+    res.render("update-password", {
+      named: userData.first_name,
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
+      lasted: userData.last_name,
+      mailed: userData.email,
+    });
+  }
+  
 });
 
 router.get("/home", async (req, res) => {
@@ -128,4 +156,11 @@ res.render("search", {
 
   });
 });
+
+router.get("/about-us", async (req, res) => {
+res.render("about-us")
+})
+router.get("/contact-us", async (req, res) => {
+  res.render("contact-us")
+  })
 module.exports = router;
