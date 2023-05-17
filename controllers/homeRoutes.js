@@ -37,6 +37,7 @@ router.get("/login", async (req, res) => {
   }
   res.render("login");
 });
+
 router.get("/logout", async (req, res) => {
   if (!req.session.logged_in) {
     res.redirect("/login");
@@ -46,7 +47,7 @@ router.get("/logout", async (req, res) => {
       res.status(200).redirect("/login");
     });
   }
-  //res.render('login');
+  
 });
 router.get("/signup", async (req, res) => {
   if (req.session.logged_in) {
