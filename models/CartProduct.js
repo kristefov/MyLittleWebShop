@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection.js');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection.js");
 
 class CartProduct extends Model {}
 
@@ -15,16 +15,16 @@ CartProduct.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'cart',
-        key: 'id',
+        model: "cart",
+        key: "id",
       },
     },
     product_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'product',
-        key: 'id',
+        model: "product",
+        key: "id",
       },
     },
   },
@@ -33,7 +33,7 @@ CartProduct.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'cart_product',
+    modelName: "cart_product",
   }
 );
 

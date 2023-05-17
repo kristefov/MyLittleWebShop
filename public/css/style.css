@@ -21,6 +21,22 @@
     align-content: center;
     justify-content: center;
 }
+.viewhero {
+  height: 26vh;
+}
+.foottext{
+  text-decoration: none !important;
+  font-weight: bold;
+  color: #d8d8d8;
+}
+.abouttext{
+  text-decoration: none !important;
+  font-weight: bold;
+}
+.updateview {
+  height: 70%;
+}
+
 a#cartButton {
   width: auto;
   height: 44px;

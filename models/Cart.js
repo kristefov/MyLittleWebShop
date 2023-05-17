@@ -25,16 +25,7 @@ Cart.init(
         model: 'user',
         key: 'id',
       }
-    },
-    product_id: {
-      type: DataTypes.INTEGER,
-      foreignKey: true,
-      references: {
-        model: 'product',
-        key: 'id',
-      }
-    },
-
+    }
   },
   {
     sequelize,
