@@ -1,5 +1,13 @@
 <main class="container">
+<div class="col-md-12 d-flex align-right" style="
+    display: flex!important;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+"> <a class="btn-lg btn btn-outline-secondary" href="/checkout">Checkout </a></div>
+    <div>
   <div class="table-responsive">
+
     <table
       class="table-primary table table-striped table-hover table-borderless table-dark align-middle"
     >
@@ -9,7 +17,7 @@
           <th>Product Name</th>
           <th>Product Price</th>
           <th>Quantity</th>
-          <th><a class="btn-lg btn btn-outline-secondary" href="/checkout">Checkout</a></th>
+          <th></th>
           
         </tr>
       </thead>
@@ -21,7 +29,7 @@
           <td>{{product.product_name}}</td>
           <td>{{product.price}}</td>
           <td>{{product.stock}}</td>
-          <td><button data-product="{{product.id}}" class="btn btn-outline-secondary clearCartBtn">Clear Cart</button></td>
+          <td><button data-product="{{product.id}}" class="btn btn-close "></button></td>
         </tr>
         {{/each}}
        
@@ -31,5 +39,5 @@
       </tfoot>
     </table>
   </div>
-  
+  </div>
 </main>

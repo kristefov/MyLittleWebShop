@@ -17,4 +17,7 @@ module.exports = {
     });
     return producta;
   },
+  get_len: (obj) => {
+    return Object.keys(obj).length;
+  },
 };

@@ -34,3 +34,23 @@ jQuery(document).ready(function ($) {
     });
   });
 });
+
+
+jQuery(document).ready(function($){
+  if(window.location.pathname == "/checkout"){
+  var whatafak = 0;
+jQuery('tr[class*="prod-item-"').each(function(){
+  let restafak = jQuery(this).find('td.rowPrice').text().toString();
+  whatafak += parseFloat(restafak);
+});
+jQuery('th.totaled').text(whatafak);
+
+  var whatafak2 = 0;
+jQuery('tr[class*="prod-item-"').each(function(){
+  let thenumber = 1;
+  whatafak2 += parseFloat(thenumber);
+});
+jQuery('th.counted').text(whatafak2);
+jQuery('span.badge.bg-primary.rounded-pill').text(whatafak2);
+  }
+  });

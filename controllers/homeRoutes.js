@@ -100,13 +100,23 @@ router.get("/checkout", async (req, res) => {
     return;
   } else{
   try {
+    const cartData = await Cart.findByPk(req.session.cart_id, {
+      include: [
+        {
+          model: Product,
+        },
+      ],
+    });
+    const cart = cartData.get({ plain: true });
     const userData = await User.findByPk(req.session.user_id);
     res.render("checkout", {
-      
+
+      emailed: userData.email,
       named: userData.first_name,
       logged_in: req.session.logged_in,
       user_id: req.session.user_id,
-      lasted: userData.last_name
+      lasted: userData.last_name,
+      cart,
     });
   } catch (err) {
     res.status(500).json(err);
