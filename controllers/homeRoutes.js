@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { User, Product } = require("../models");
 const withAuth = require("../utils/withAuth");
 const sequelize = require("../config/connection");
-const sequelizeOP = require("sequelize").Op; 
+const sequelizeOP = require("sequelize").Op;
 
 router.get("/", withAuth, async (req, res) => {
   try {
@@ -14,8 +14,8 @@ router.get("/", withAuth, async (req, res) => {
         },
       ],
     });
-    const products = productData.map((product) => product.get({ plain: true }));
-    const thinkabitmorUSERname = await User.findByPk(req.session.user_id);
+    const products = productData.map(product => product.get({ plain: true }));
+    const thinkabitmorUSERname = await User.findByPk(req.user.id);
 
     res.render("homepage", {
       le_idiot: req.session.user_id,
@@ -31,18 +31,19 @@ router.get("/", withAuth, async (req, res) => {
 });
 
 router.get("/login", async (req, res) => {
-  if (req.session.logged_in) {
+  if (req.cookies.access_token) {
     res.redirect("/");
     return;
   }
   res.render("login");
 });
 router.get("/logout", async (req, res) => {
-  if (!req.session.logged_in) {
+  if (!req.cookies.access_token) {
     res.redirect("/login");
     return;
   } else {
     req.session.destroy(() => {
+      res.clearCookie("access_token");
       res.status(200).redirect("/login");
     });
   }
@@ -91,7 +92,7 @@ router.get("/cart", async (req, res) => {
           },
         ],
       });
-      const carts = cartData.map((cart) => cart.get({ plain: true }));
+      const carts = cartData.map(cart => cart.get({ plain: true }));
       res.render("cart", {
         user_id: req.session.user_id,
         carts,
@@ -104,28 +105,24 @@ router.get("/cart", async (req, res) => {
   }
 });
 
-
-
 router.get("/search/:id", withAuth, async (req, res) => {
-  
-  const search = req.params.id; 
+  const search = req.params.id;
   const productData = await Product.findAll({
     where: {
-        product_name: {
-          [sequelizeOP.like]: `%${search}%`,
-        },
+      product_name: {
+        [sequelizeOP.like]: `%${search}%`,
       },
-});
-console.log(productData);
-const products = productData.map(product => product.get({ plain: true }));
-console.log(products);
+    },
+  });
+  console.log(productData);
+  const products = productData.map(product => product.get({ plain: true }));
+  console.log(products);
 
-res.render("search", {
-   products,
-   search: search,
-   user_id: req.session.user_id,
+  res.render("search", {
+    products,
+    search: search,
+    user_id: req.session.user_id,
     logged_in: req.session.logged_in,
-
   });
 });
 module.exports = router;
