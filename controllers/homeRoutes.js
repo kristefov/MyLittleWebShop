@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { User, Product, Cart } = require("../models");
 const withAuth = require("../utils/withAuth");
 const sequelize = require("../config/connection");
+
 const sequelizeOP = require("sequelize").Op;
 
 router.get("/", withAuth, async (req, res) => {
