@@ -27,6 +27,4 @@ const regHandler = async (event) => {
     }
   }
 };
-if(window.location.pathname == '/signup') {
 document.querySelector("#signupForm").addEventListener("submit", regHandler);
-}
