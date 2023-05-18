@@ -6,11 +6,9 @@ const CartHandler = async function(event) {
   const productID = parseInt(this.dataset.product);
 console.log(productID);
   if (productID) {
+    
     // Send the e-mail and password to the server
-    // post to /login
-
-    // Send the e-mail and password to the server
-    // post to /login qithout fetch
+    // post to /login 
 
     const response = await fetch("/api/cart/products", {
       method: "POST",
@@ -24,8 +22,7 @@ console.log(productID);
       alert("Product already in cart");
     }
   }
-};
-
+}; 
 document.querySelectorAll(".addtocart").forEach( (button) => {
   console.log(button);
 button.addEventListener("click", CartHandler);
