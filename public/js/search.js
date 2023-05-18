@@ -21,7 +21,9 @@ const searchHandler = async (event) => {
     document.location.replace("/search/" + tempvalo);
   }
 };
-
+jQuery("#searchSubmit").on("click", function(){
+  jQuery("#searchForm").submit();
+});
 document.querySelector("#searchForm").addEventListener("submit", searchHandler);
 jQuery(document).ready(function ($) {
   $("#search2").on("keyup", function () {

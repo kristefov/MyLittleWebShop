@@ -23,6 +23,7 @@ console.log(productID);
     }
   }
 }; 
+
 document.querySelectorAll(".addtocart").forEach( (button) => {
   console.log(button);
 button.addEventListener("click", CartHandler);

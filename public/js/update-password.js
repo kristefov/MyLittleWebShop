@@ -18,5 +18,6 @@ const updatePasswordHandler = async (event) => {
     alert("Failed to update");
   }
 };
-
+if(window.location.pathname == '/update-p') {
 document.getElementById("updatePasswordBtn").addEventListener("submit", updatePasswordHandler);
+}

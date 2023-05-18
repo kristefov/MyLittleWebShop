@@ -18,5 +18,6 @@ const updateEmailHandler = async (event) => {
     alert("Failed to update");
   }
 };
-
+if(window.location.pathname == '/update-e') {
 document.querySelector("#updateEmailBtn").addEventListener("submit", updateEmailHandler);
+}
