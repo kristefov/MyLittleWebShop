@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { User, Cart } = require("../../models");
 const { createToken } = require("../../utils/jwt");
+require("dotenv").config();
 
 // POST create a new user
 router.post("/register", async (req, res) => {
