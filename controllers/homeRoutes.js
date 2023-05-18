@@ -98,28 +98,37 @@ router.get("/checkout", async (req, res) => {
   if (!req.session.logged_in) {
     res.redirect("/");
     return;
-  } else{
+  }else{
   try {
+    const cartData = await Cart.findByPk(req.session.cart_id, {
+      include: [
+        {
+          model: Product,
+        },
+      ],
+    });
+    const cart = cartData.get({ plain: true });
     const userData = await User.findByPk(req.session.user_id);
+   // const userData = await User.findByPk(req.session.user_id);
     res.render("checkout", {
-      
+      cart,
       named: userData.first_name,
       logged_in: req.session.logged_in,
       user_id: req.session.user_id,
-      lasted: userData.last_name
+      lasted: userData.last_name,
+      mailed: userData.email,
     });
   } catch (err) {
     res.status(500).json(err);
   }
-
-}});
+}
+});
 
 router.get("/cart", async (req, res) => {
   if (!req.session.logged_in) {
-
     res.redirect("/");
     return;
-  } else {
+  }else{
     try {
       const cartData = await Cart.findByPk(req.session.cart_id, {
         include: [
@@ -130,16 +139,20 @@ router.get("/cart", async (req, res) => {
       });
       const cart = cartData.get({ plain: true });
       res.render("cart", {
-        user_id: req.session.user_id,
         cart,
+        named: userData.first_name,
         logged_in: req.session.logged_in,
+        user_id: req.session.user_id,
+        lasted: userData.last_name,
+        mailed: userData.email,
       });
     } catch (err) {
       console.error(err);
       res.status(500).json(err);
     }
   }
-});
+}
+);
 
 router.get("/search/:id", withAuth, async (req, res) => {
   const search = req.params.id;
@@ -157,8 +170,11 @@ router.get("/search/:id", withAuth, async (req, res) => {
   res.render("search", {
     products,
     search: search,
-    user_id: req.session.user_id,
+    named: userData.first_name,
     logged_in: req.session.logged_in,
+    user_id: req.session.user_id,
+    lasted: userData.last_name,
+    mailed: userData.email,
   });
 });
 

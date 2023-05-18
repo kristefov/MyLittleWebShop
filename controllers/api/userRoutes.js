@@ -59,6 +59,8 @@ router.post("/login", async (req, res) => {
     res.cookie("access_token", token);
     req.session.save(() => {
       req.session.user_id = userData.id;
+      req.session.email = userData.email;
+      req.session.name = userData.first_name + " " + userData.last_name;
       req.session.logged_in = true;
       req.session.token = token;
       req.session.searched = false;

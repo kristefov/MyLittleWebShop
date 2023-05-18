@@ -1,9 +1,8 @@
 <div class="container">
   <main>
     <div class="py-5 text-center">
-     
       <h2>Checkout form</h2>
-      
+      <p class="lead">All purchases have 14-Day money back guarantee</p>
     </div>
 
     <div class="row g-5">
@@ -12,42 +11,43 @@
           <span class="text-primary">Your cart</span>
           <span class="badge bg-primary rounded-pill">3</span>
         </h4>
-        <ul class="list-group mb-3">
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Product name</h6>
-              <small class="text-body-secondary">Brief description</small>
-            </div>
-            <span class="text-body-secondary">$12</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Second product</h6>
-              <small class="text-body-secondary">Brief description</small>
-            </div>
-            <span class="text-body-secondary">$8</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Third item</h6>
-              <small class="text-body-secondary">Brief description</small>
-            </div>
-            <span class="text-body-secondary">$5</span>
-          </li>
-          <li
-            class="list-group-item d-flex justify-content-between bg-body-tertiary"
-          >
-            <div class="text-success">
-              <h6 class="my-0">Promo code</h6>
-              <small>EXAMPLECODE</small>
-            </div>
-            <span class="text-success">−$5</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between">
-            <span>Total (USD)</span>
-            <strong>$20</strong>
-          </li>
-        </ul>
+           <table
+      class="table-primary table table-striped table-hover table-borderless table-dark align-middle"
+    >
+      <thead class="table-primary table table-striped table-hover table-borderless table-dark align-middle">
+        <tr>
+          <th>Product Image</th>
+          <th>Product Name</th>
+          <th>Product Price</th>
+          <th>Quantity</th>
+        
+          
+        </tr>
+      </thead>
+      
+      <tbody class="table-group-divider">
+          {{#each cart.products as |product|}}
+        <tr class="table-primary table table-striped table-hover table-borderless table-dark align-middle">
+          <td scope="row"><img class="cartimage" src="{{product.image}}"></td>
+          <td>{{product.product_name}}</td>
+          <td>{{product.price}}</td>
+          <td>{{product.stock}}</td>
+       
+        </tr>
+        {{/each}}
+       
+      </tbody>
+ <tfoot>
+ <tr>
+          <th>Total Items:</th>
+          <th class="totalItems" name="totalItems"></th>
+          <th>Total Price:</th>
+          <th class="totalPrice" name="totalPrice"></th>
+        
+          
+        </tr>
+      </tfoot>
+    </table>
 
         <form class="card p-2">
           <div class="input-group">
@@ -99,7 +99,7 @@
                 class="form-control"
                 id="email"
                 placeholder="you@example.com" 
-                 value="{{ email }}"
+                 value="{{ mailed }}"
               />
               <div class="invalid-feedback">
                 Please enter a valid email address for shipping updates.
