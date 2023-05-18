@@ -17,7 +17,12 @@ console.log(productID);
       body: JSON.stringify([productID]),
       headers: { "Content-Type": "application/json" },
     });
-  
+    console.log(response);
+    if (response.ok) {
+      alert("Product added to cart");
+    } else {
+      alert("Product already in cart");
+    }
   }
 };
 
