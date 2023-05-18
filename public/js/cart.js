@@ -17,14 +17,7 @@ console.log(productID);
       body: JSON.stringify([productID]),
       headers: { "Content-Type": "application/json" },
     });
-    console.log(response);
-    if (response.ok) {
-      console.log("Added to cart");
-
-      document.location.replace("/cart");
-    } else {
-      alert("Failed to add to cart");
-    }
+  
   }
 };
 
