@@ -98,18 +98,11 @@ router.get("/checkout", async (req, res) => {
   if (!req.session.logged_in) {
     res.redirect("/");
     return;
-  }
+  } else{
   try {
-    const cartData = await Cart.findByPk(req.session.cart_id, {
-      include: [
-        {
-          model: Product,
-        },
-      ],
-    });
-    const cart = cartData.get({ plain: true });
+    const userData = await User.findByPk(req.session.user_id);
     res.render("checkout", {
-      cart,
+      
       named: userData.first_name,
       logged_in: req.session.logged_in,
       user_id: req.session.user_id,
@@ -119,7 +112,8 @@ router.get("/checkout", async (req, res) => {
     res.status(500).json(err);
   }
 
-});
+}});
+
 router.get("/cart", async (req, res) => {
   if (!req.session.logged_in) {
 
