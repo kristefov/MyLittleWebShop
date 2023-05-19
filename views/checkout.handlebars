@@ -1,50 +1,58 @@
 <div class="container">
   <main>
     <div class="py-5 text-center">
-     
+
       <h2>Checkout form</h2>
-      
+
     </div>
 
     <div class="row g-5">
       <div class="col-md-5 col-lg-4 order-md-last">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
           <span class="text-primary">Your cart</span>
-          <span class="badge bg-primary rounded-pill">{{ get_len cart }}</span>
+          <span class="badge bg-primary rounded-pill">{{get_len cart}}</span>
         </h4>
-<table
-      class="table-primary table table-striped table-hover table-borderless table-dark align-middle"
-    >
-      <thead class="table-primary table table-striped table-hover table-borderless table-dark align-middle">
-        <tr>
-          <th>Product Image</th>
-          <th>Product Name</th>
-          <th>Product Price</th>
-          <th>Quantity</th>
-          
-        </tr>
-      </thead>
-      
-      <tbody class="table-group-divider">
-          {{#each cart.products as |product|}}
-        <tr class="prod-item-{{product.id}} table-primary table table-striped table-hover table-borderless table-dark align-middle">
-          <td scope="row"><img class="cartimage" src="{{product.image}}"></td>
-          <td>{{product.product_name}}</td>
-          <td class="rowPrice">{{product.price}}</td>
-          <td class="rowQuantity">1</td>
-        </tr>
-        {{/each}}
-       
-      </tbody>
-      <tfoot>
- <tr>
-    <th>Count x </th>
-    <th class="counted">  </th>
-    <th>Total Price £ </th>
-     <th class="totaled"> </th>
- </tr>
-      </tfoot>
-    </table>
+        <table
+          class="table-primary table table-striped table-hover table-borderless table-dark align-middle"
+        >
+          <thead
+            class="table-primary table table-striped table-hover table-borderless table-dark align-middle"
+          >
+            <tr>
+              <th>Product Image</th>
+              <th>Product Name</th>
+              <th>Product Price</th>
+              <th>Quantity</th>
+
+            </tr>
+          </thead>
+
+          <tbody class="table-group-divider">
+            {{#each cart.products as |product|}}
+              <tr
+                class="prod-item-{{product.id}}
+                  table-primary table table-striped table-hover table-borderless table-dark align-middle"
+              >
+                <td scope="row"><img
+                    class="cartimage"
+                    src="{{product.image}}"
+                  /></td>
+                <td>{{product.product_name}}</td>
+                <td class="rowPrice">{{product.price}}</td>
+                <td class="rowQuantity">1</td>
+              </tr>
+            {{/each}}
+
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>Count x </th>
+              <th class="counted"> </th>
+              <th>Total Price £ </th>
+              <th class="totaled"> </th>
+            </tr>
+          </tfoot>
+        </table>
         <form class="card p-2">
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Promo code" />
@@ -53,13 +61,17 @@
         </form>
         <form id="buyMYcd" class="d-flex card p-0">
           <div class="d-flex input-group">
-<button type="submit" class="d-flex btn btn-outline-success w-100" style="
+            <button
+              type="submit"
+              class="d-flex btn btn-outline-success w-100"
+              style="
     display: flex!important;
     flex-direction: column;
     align-items: stretch;
     align-content: stretch;
-">CHECKOUT</button>
-        </div>
+"
+            >CHECKOUT</button>
+          </div>
         </form>
       </div>
       <div class="col-md-7 col-lg-8">
@@ -73,7 +85,7 @@
                 class="form-control"
                 id="firstName"
                 placeholder=""
-                value="{{ named }}"
+                value="{{named}}"
                 required=""
               />
               <div class="invalid-feedback">
@@ -88,7 +100,7 @@
                 class="form-control"
                 id="lastName"
                 placeholder=""
-                value="{{ lasted }}"
+                value="{{lasted}}"
                 required=""
               />
               <div class="invalid-feedback">
@@ -96,16 +108,15 @@
               </div>
             </div>
 
-
             <div class="col-12">
               <label for="email" class="form-label">Email
-   </label>
+              </label>
               <input
                 type="email"
                 class="form-control"
                 id="email"
-                placeholder="you@example.com" 
-                 value="{{ emailed }}"
+                placeholder="you@example.com"
+                value="{{emailed}}"
               />
               <div class="invalid-feedback">
                 Please enter a valid email address for shipping updates.
@@ -190,7 +201,7 @@
 
           <hr class="my-4" />
 
-          <h4 class="mb-3 ">Payment</h4>
+          <h4 class="mb-3">Payment</h4>
 
           <div class="my-3 d-flex">
             <div class="form-check m-2">

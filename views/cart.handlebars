@@ -1,43 +1,58 @@
 <main class="container">
-<div class="col-md-12 d-flex align-right" style="
+  <div
+    class="col-md-12 d-flex align-right"
+    style="
     display: flex!important;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-end;
-"> <a class="btn-lg btn btn-outline-secondary" href="/checkout">Checkout </a></div>
-    <div>
-  <div class="table-responsive">
+"
+  >
+    <a class="btn-lg btn btn-outline-secondary" href="/checkout">Checkout
+    </a></div>
+  <div>
+    <div class="table-responsive">
 
-    <table
-      class="table-primary table table-striped table-hover table-borderless table-dark align-middle"
-    >
-      <thead class="table-primary table table-striped table-hover table-borderless table-dark align-middle">
-        <tr>
-          <th>Product Image</th>
-          <th>Product Name</th>
-          <th>Product Price</th>
-          <th>Quantity</th>
-          <th></th>
-          
-        </tr>
-      </thead>
-      
-      <tbody class="table-group-divider">
+      <table
+        class="table-primary table table-striped table-hover table-borderless table-dark align-middle"
+      >
+        <thead
+          class="table-primary table table-striped table-hover table-borderless table-dark align-middle"
+        >
+          <tr>
+            <th>Product Image</th>
+            <th>Product Name</th>
+            <th>Product Price</th>
+            <th>Quantity</th>
+            <th></th>
+
+          </tr>
+        </thead>
+
+        <tbody class="table-group-divider">
           {{#each cart.products as |product|}}
-        <tr class="table-primary table table-striped table-hover table-borderless table-dark align-middle">
-          <td scope="row"><img class="cartimage" src="{{product.image}}"></td>
-          <td>{{product.product_name}}</td>
-          <td>{{product.price}}</td>
-          <td>{{product.stock}}</td>
-          <td><button data-product="{{product.id}}" class="btn btn-close "></button></td>
-        </tr>
-        {{/each}}
-       
-      </tbody>
-      <tfoot>
+            <tr
+              class="table-primary table table-striped table-hover table-borderless table-dark align-middle"
+            >
+              <td scope="row"><img
+                  class="cartimage"
+                  src="{{product.image}}"
+                /></td>
+              <td>{{product.product_name}}</td>
+              <td>{{product.price}}</td>
+              <td>{{product.stock}}</td>
+              <td><button
+                  data-product="{{product.id}}"
+                  class="btn btn-close"
+                ></button></td>
+            </tr>
+          {{/each}}
 
-      </tfoot>
-    </table>
-  </div>
+        </tbody>
+        <tfoot>
+
+        </tfoot>
+      </table>
+    </div>
   </div>
 </main>
