@@ -3,7 +3,13 @@ const router = require("express").Router();
 const sequelizeOP = require("sequelize").Op;
 const { User, Cart, Product } = require("../../models");
 const stripe = require('stripe')('sk_test_26PHem9AhJZvU623DfE1x4sd');
-
+/*
+Fill out the payment details with the test card information:
+Enter 4242 4242 4242 4242 as the card number.
+Enter any future date for card expiry.
+Enter any 3-digit number for CVC.
+Enter any billing postal code.
+*/
 router.post('/create-checkout-session', async (req, res) => {
     try {
         const cartData = await Cart.findAll({
