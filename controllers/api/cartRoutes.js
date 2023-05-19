@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { Op } = require("sequelize");
-const { User, Product, Cart, CartProduct } = require("../../models");
-
+const { Product, Cart, CartProduct } = require("../../models");
+// find all products and present them in the homepage
 router.get("/", async (req, res) => {
   try {
     const cartData = await Cart.findAll({
@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+//create a new cart
 router.post("/", async (req, res) => {
   console.log(req);
   try {
@@ -33,7 +33,7 @@ router.post("/", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+//add a product to a cart
 router.post("/products", async (req, res) => {
   try {
     if (!Array.isArray(req.body)) {
@@ -57,8 +57,7 @@ router.post("/products", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-
+//deletes a product from a cart
 router.delete("/products", async (req, res) => {
   try {
     if (!Array.isArray(req.body)) {
@@ -84,7 +83,7 @@ router.delete("/products", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+//deletes a cart
 router.delete("/:id", async (req, res) => {
   try {
     const cartData = await Cart.destroy({
@@ -100,6 +99,5 @@ router.delete("/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
 
 module.exports = router;

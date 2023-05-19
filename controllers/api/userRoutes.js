@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { User, Cart } = require("../../models");
-const { createToken } = require("../../utils/jwt");
-require("dotenv").config();
+
+
 
 // POST create a new user
 router.post("/register", async (req, res) => {
@@ -13,13 +13,11 @@ router.post("/register", async (req, res) => {
       session_id: req.session.id,
       
     });
-    const token = createToken(userData);
-    res.cookie("access_token", token); 
+    
     req.session.save(() => {
       req.session.cart_id = cartData.id;
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-      req.session.token = token;
 
       res.status(200).json({
         logged_in: true,
@@ -56,12 +54,10 @@ router.post("/login", async (req, res) => {
         .json({ message: "Incorrect email or password, please try again" });
       return;
     }
-    const token = createToken(userData);
-    res.cookie("access_token", token);
+    
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-      req.session.token = token;
       req.session.searched = false;
       req.session.cart_id = userData.cart.id;
       res.status(200).json({
@@ -70,7 +66,6 @@ router.post("/login", async (req, res) => {
         message: "You are now logged in!",
       });
     });
-    // res.json({ user: userData, message: "You are now logged in!" });
   } catch (err) {
     res.status(400).json(err);
   }

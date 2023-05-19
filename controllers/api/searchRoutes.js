@@ -1,7 +1,8 @@
 const router = require("express").Router();
 const sequelizeOP = require("sequelize").Op;
-const { Product, User, Category, Tag, ProductTag } = require("../../models");
+const { Product } = require("../../models");
 
+// search for all products bt named keyword
 router.post("/:keyword", async (req, res) => {
   const search = req.params.keyword;
   const productData = await Product.findAll({

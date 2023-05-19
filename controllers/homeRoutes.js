@@ -1,10 +1,9 @@
 const router = require("express").Router();
 const { User, Product, Cart } = require("../models");
 const withAuth = require("../utils/withAuth");
-const sequelize = require("../config/connection");
 
 const sequelizeOP = require("sequelize").Op;
-
+// present the homepage when user is logged in
 router.get("/", withAuth, async (req, res) => {
   try {
     const productData = await Product.findAll({
@@ -30,7 +29,7 @@ router.get("/", withAuth, async (req, res) => {
     res.status(500).json(error);
   }
 });
-
+//login route
 router.get("/login", async (req, res) => {
   if (req.session.logged_in) {
     res.redirect("/");
@@ -38,7 +37,7 @@ router.get("/login", async (req, res) => {
   }
   res.render("login");
 });
-
+//logout route
 router.get("/logout", async (req, res) => {
   if (!req.session.logged_in) {
     res.redirect("/login");
@@ -49,6 +48,7 @@ router.get("/logout", async (req, res) => {
     });
   }
 });
+
 router.get("/signup", async (req, res) => {
   if (req.session.logged_in) {
     res.redirect("/");
@@ -56,7 +56,7 @@ router.get("/signup", async (req, res) => {
   }
   res.render("signUp");
 });
-
+// render the update email page
 router.get("/update-e", withAuth, async (req, res) => {
   if (req.session.logged_in) {
     const userData = await User.findByPk(req.session.user_id);
@@ -69,7 +69,7 @@ router.get("/update-e", withAuth, async (req, res) => {
     });
   }
 });
-
+// render the update password page
 router.get("/update-p", withAuth, async (req, res) => {
   if (req.session.logged_in) {
     const userData = await User.findByPk(req.session.user_id);
@@ -83,50 +83,39 @@ router.get("/update-p", withAuth, async (req, res) => {
   }
 });
 
-router.get("/home", async (req, res) => {
-  if (!req.session.logged_in) {
-    res.redirect("/debil");
-    return;
-  }
-  res.render("homepage", {
-    // products,
-    logged_in: req.session.logged_in,
-  });
-});
 
+// render the checkout page
 router.get("/checkout", async (req, res) => {
   if (!req.session.logged_in) {
     res.redirect("/");
     return;
-  } else{
-  try {
-    const cartData = await Cart.findByPk(req.session.cart_id, {
-      include: [
-        {
-          model: Product,
-        },
-      ],
-    });
-    const cart = cartData.get({ plain: true });
-    const userData = await User.findByPk(req.session.user_id);
-    res.render("checkout", {
-
-      emailed: userData.email,
-      named: userData.first_name,
-      logged_in: req.session.logged_in,
-      user_id: req.session.user_id,
-      lasted: userData.last_name,
-      cart,
-    });
-  } catch (err) {
-    res.status(500).json(err);
+  } else {
+    try {
+      const cartData = await Cart.findByPk(req.session.cart_id, {
+        include: [
+          {
+            model: Product,
+          },
+        ],
+      });
+      const cart = cartData.get({ plain: true });
+      const userData = await User.findByPk(req.session.user_id);
+      res.render("checkout", {
+        emailed: userData.email,
+        named: userData.first_name,
+        logged_in: req.session.logged_in,
+        user_id: req.session.user_id,
+        lasted: userData.last_name,
+        cart,
+      });
+    } catch (err) {
+      res.status(500).json(err);
+    }
   }
-
-}});
-
+});
+// render the cart page
 router.get("/cart", async (req, res) => {
   if (!req.session.logged_in) {
-
     res.redirect("/");
     return;
   } else {
@@ -150,7 +139,7 @@ router.get("/cart", async (req, res) => {
     }
   }
 });
-
+//render the single product page searcehd by name
 router.get("/search/:id", withAuth, async (req, res) => {
   const search = req.params.id;
   const productData = await Product.findAll({
@@ -171,42 +160,36 @@ router.get("/search/:id", withAuth, async (req, res) => {
     logged_in: req.session.logged_in,
   });
 });
-
+// render the about us page
 router.get("/about-us", async (req, res) => {
   const userData = await User.findByPk(req.session.user_id);
-  if(req.session.logged_in) {
-    
-  res.render("about-us" , {
-    named: userData.first_name,
-    logged_in: req.session.logged_in,
-    user_id: req.session.user_id,
-    lasted: userData.last_name,
-    
-  });
-}else{
-  res.render("about-us", {
-    named: 'Guest',
-   
-  });
-}
+  if (req.session.logged_in) {
+    res.render("about-us", {
+      named: userData.first_name,
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
+      lasted: userData.last_name,
+    });
+  } else {
+    res.render("about-us", {
+      named: "Guest",
+    });
+  }
 });
+// render the contact us page
 router.get("/contact-us", async (req, res) => {
   const userData = await User.findByPk(req.session.user_id);
-  if(req.session.logged_in) {
-    
-  
-  res.render("contact-us", {
-    named: userData.first_name,
-    logged_in: req.session.logged_in,
-    user_id: req.session.user_id,
-    lasted: userData.last_name,
-   
-  });
-}else{
-  res.render("contact-us", {
-    named: 'Guest',
-   
-  });
-}
+  if (req.session.logged_in) {
+    res.render("contact-us", {
+      named: userData.first_name,
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
+      lasted: userData.last_name,
+    });
+  } else {
+    res.render("contact-us", {
+      named: "Guest",
+    });
+  }
 });
 module.exports = router;
