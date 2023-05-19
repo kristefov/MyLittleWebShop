@@ -24,6 +24,7 @@
     "heroku": "^7.3.0",
     "jsonwebtoken": "^9.0.0",
     "mysql2": "^2.2.1",
-    "sequelize": "^6.3.5"
+    "sequelize": "^6.3.5",
+    "stripe": "^12.5.0"
   }
 }

@@ -85,6 +85,37 @@ router.get("/update-p", withAuth, async (req, res) => {
 
 
 // render the checkout page
+router.get("/checkout/success", async (req, res) => {
+  if (!req.session.logged_in) {
+    res.redirect("/");
+    return;
+  } else {
+   try   {
+      res.render("checkout_success", {
+        requested: req,
+        responded: res
+      });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  }
+});
+router.get("/checkout/cancel", async (req, res) => {
+  if (!req.session.logged_in) {
+    res.redirect("/");
+    return;
+  } else {
+   try   {
+      res.render("checkout_success", {
+        requested: req,
+        responded: res
+      });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  }
+});
+// render the checkout page
 router.get("/checkout", async (req, res) => {
   if (!req.session.logged_in) {
     res.redirect("/");
