@@ -14,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.0",
+    "compression": "^1.7.4",
     "connect-session-sequelize": "^7.1.6",
     "cookie-parser": "^1.4.6",
     "dotenv": "^8.2.0",
@@ -25,6 +26,7 @@
     "jsonwebtoken": "^9.0.0",
     "mysql2": "^2.2.1",
     "sequelize": "^6.3.5",
+    "serve-favicon": "^2.5.0",
     "stripe": "^12.5.0"
   }
 }
