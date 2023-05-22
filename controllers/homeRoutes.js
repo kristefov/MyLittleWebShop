@@ -159,6 +159,7 @@ router.get("/cart", async (req, res) => {
         ],
       });
       const cart = cartData.get({ plain: true });
+console.log(cart);
       res.render("cart", {
         user_id: req.session.user_id,
         cart,
