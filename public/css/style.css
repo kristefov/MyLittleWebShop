@@ -216,12 +216,19 @@ button.navbar-toggler {
 
 
 main.container{
-  min-height: 120vh!important;
+  min-height: 90vh!important;
   height: 100%!important;
 }
 .album.bg-body-tertiary {
-  padding-bottom: 56px;
+  padding-bottom: 26px;
 }
 footer.container.d-flex.footer.pt-5 {
   margin-top: 56px;
+}
+
+button.btn.btn-outline-danger.clearCartBtn {
+  border: 0;
+  height: 30px;
+  width: 30px;
+  padding: 0;
 }
