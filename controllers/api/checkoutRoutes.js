@@ -21,12 +21,22 @@ router.post('/create-checkout-session', async (req, res) => {
           ],
         });
         const cartItems = cartData.map((product) => product.get({ plain: true }));
-    
+console.log(req);    
 console.log(cartItems);
 console.log(cartData);
 const userData = await User.findByPk(req.session.user_id);
     const stripeSession = await stripe.checkout.sessions.create({
+customer_details: [{
+    "address": null,//checkoutForm.address,
+    "email": userData.email,
+    "name": "" + userData.first_name+" " +userData.last_name,
+    "phone": null,//checkoutForm.phone,
+    "tax_exempt": "none",
+    "tax_ids": null
+  }],
+       
         customer_email: userData.email,
+         customer_create:"always",
       line_items: [
         {
           price_data: {
