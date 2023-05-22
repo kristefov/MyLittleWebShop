@@ -26,6 +26,14 @@ console.log(cartItems);
 console.log(cartData);
 const userData = await User.findByPk(req.session.user_id);
     const stripeSession = await stripe.checkout.sessions.create({
+        customer_details: [{
+    "address": null,//checkoutForm.address,
+    "email": userData.email,
+    "name": "" + userData.first_name+" " +userData.last_name,
+    "phone": null,//checkoutForm.phone,
+    "tax_exempt": "none",
+    "tax_ids": null
+  }],
         customer_email: userData.email,
       line_items: [
         {
