@@ -8,6 +8,10 @@
 
 
 #
+<img src="./assets/images/ezgif.com-gif-maker.gif" width="100%">
+
+#
+
 ## Table of Contents
 
 * [Description](#description)
@@ -15,7 +19,6 @@
 * [Installation](#installation)
 * [Usage](#usage)
 * [Walkthrough](#walkthrough)
-* [Demo](#demo)
 * [Link](#link)
 * [Authors](#authors)
 * [License](#license)
@@ -75,11 +78,11 @@ For and suggestions or contributions you can reach me at my email address or you
 #
 [<img src="./assets/images/Screenshot 2023-05-22 at 02.44.27.png" width="100%">](https://drive.google.com/file/d/1KBccUEZynfG1GfyiN6Vm40K3h0MgaXGY/view?usp=sharing)
 #
-## Demo
 
-<img src="./assets/images/ezgif.com-gif-maker.gif" width="100%">
 
-#
+
+
+
 ## Link
 Link to repository:
 
