@@ -1,68 +1,86 @@
+[![Hex.pm](https://img.shields.io/badge/license%20-mit-blue?style=for-the-badge&logo=appveyor)](https://choosealicense.com/licenses/mit)
 
+<img
+  src="./assets/images/Screenshot 2023-05-22 at 02.52.03.png"
+  alt="Alt text"
+  title="MyLittleWebSHop"
+  style="display: inline-block; margin: 0 auto; max-width: 350px">
 
-# Project 2  My little web shop
+## License
 
-My little web shop is an ecommerce application that can be downloaded from GitHub and be used by sellers all over the world to create their very own online store. Its easy to add or remove products as well as provide current stock of your products. Users can create an account with an email address and password. Users can browse different categories, Add things to their basket or favourites list and also search for products
-
-
+- This application is covered under: [MIT License](https://choosealicense.com/licenses/mit)
+#
 ## Table of Contents
-- [Project 2  My little web shop](#project-2-my-little-web-shop)
-  - [Table of Contents](#table-of-contents)
-  - [Setup](#setup)
-  - [Screenshots](#usage)
-  - [Walkthrough](#api-routes)
-  - [Demo](#demo)
-  - [Questions](#questions)
-  - [Authors](#authors)
-  - [Licence](#licence)
 
+- [Description](#Description)
+- [Table of Contents](#table-of-contents)
+- [Installation](#Installation)
+- [Usage](#Usage)
+- [Screenshots](#Screenshots)
+- [Walkthrough](#Walkthrough)
+- [Demo](#Demo)
+- [Link](#Link)
+- [Authors](#Authors)
+#
+## Description
 
-## Setup
+Welcome to our LittleWebShop, where shopping meets convenience and quality! We are passionate about providing you with a seamless and enjoyable online shopping experience. Allow us to introduce ourselves and give you a glimpse into who we are.
 
-Clone the project
+At our e-commerce store, we believe that shopping should be a delightful journey, right from the comfort of your own home. We understand the importance of offering a wide range of products that cater to your diverse needs and interests. From fashion and beauty to home decor and electronics, we strive to curate an extensive collection that meets your lifestyle demands.
 
-```bash
-  git clone 
+Our team is dedicated to handpicking each product with meticulous care. We prioritize quality, ensuring that every item we feature meets stringent standards. We collaborate with trusted suppliers and brands, ensuring that you receive only the best products that surpass your expectations.
+
+Customer satisfaction is at the core of our philosophy. We aim to exceed your expectations by providing excellent customer service, prompt assistance, and timely deliveries. Our dedicated support team is always ready to answer your questions and address any concerns you may have throughout your shopping journey.
+
+We believe in the power of innovation and technology. Our user-friendly website is designed to offer you a seamless and intuitive browsing experience. We regularly update our platform to incorporate the latest advancements, ensuring that you have access to cutting-edge features and functionalities.
+
+We also understand the importance of security and privacy. Rest assured, your personal information and payment details are protected with robust encryption protocols. Your trust is paramount to us, and we take every measure to safeguard your data.
+
+But we're not just an online store; we're a community. We value your feedback and suggestions, as they help us continually improve our offerings and tailor our services to your needs. We strive to create a space where like-minded individuals can connect, share their experiences, and find inspiration.
+
+Join us on this exciting journey of exploration and discovery. Whether you're searching for the latest fashion trends, unique gifts, or everyday essentials, we're here to make your shopping experience seamless, enjoyable, and rewarding. We invite you to explore our LittleWebShop and embark on a shopping adventure like no other.
+
+Thank you for choosing us. We're thrilled to have you as part of our vibrant and ever-growing community.
+
+Happy shopping!
+#
+## Installation
+
+You can clone the git repository and run next command to use tha web application locally
+
+Install all dependencies
+
 ```
-
-Go to the project directory
-
-```bash
-  cd my-project
-```
-
-Install dependencies
-
-```bash
   npm install
 ```
+
 Seed the database
 
-```bash
+```
   npm run seed
 ```
 
 Start the server
 
-```bash
+```
   npm run start
 ```
+#
+## Usage
+In order to use the program you will need to clone the repository from GitHub provided in the link below.
 
-Open your brwoser and navigate to
-
-```bash
- http://127.0.0.1:3001
-```
-
-Use the Login form, or open the top nav bar to navigate to ```/signup``` link to create an account
-
-
-
+#
+## How to Contribute
+For and suggestions or contributions you can reach me at my email address or you can clone to code and edit it the way it will suite you the best.
+#
 ## Screenshots
 
 TBA
 
-## Walkthrough
+#
+## Walkthrough Video
+#
+[<img src="./assets/images/Screenshot 2023-05-22 at 02.44.27.png" width="50%">](https://drive.google.com/file/d/1vMS3BybLl7ypFnMPQamm1ncDs6lsTyFO/view?usp=sharing)
 
 TBA
 
@@ -70,14 +88,19 @@ TBA
 
 Insert gif or link to demo
 
+## Link
+Link to repository:
 
-## Questions
-  
-  If you have any questions, please contact me at dexit@dyc.lv. Please see the below "Authors" section and use any of our GitHub profiles to reach out.
+https://github.com/kristiyantefov/mylittlewebshop
+
+Link to website:
+
+
+https://mylittlewebshop.herokuapp.com
 
 ## Authors
 
-- [kristian](https://github.com/kristiyantefov) 
+- [Kristiyan](https://github.com/kristiyantefov)
 
 - [Rehards](https://github.com/dexit)
 
@@ -85,7 +108,3 @@ Insert gif or link to demo
 
 - [Ashley](https://github.com/Dovahkiin1993)
 
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
