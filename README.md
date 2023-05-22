@@ -97,9 +97,9 @@ https://mylittlewebshop.herokuapp.com
 
 - [Kristiyan](https://github.com/kristiyantefov)
 
-- [Rehards](https://github.com/dexit)
+- [Rihards](https://github.com/dexit)
 
-- [Abdishkur](https://github.com/Karbuuno)
+- [Abdishakur](https://github.com/Karbuuno)
 
 - [Ashley](https://github.com/Dovahkiin1993)
 
