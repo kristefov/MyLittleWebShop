@@ -4,7 +4,7 @@ const sequelize = require('../config/connection.js');
 
 class Cart extends Model {}
 
-// write me cart logic bljad
+//Model Cart
 Cart.init(
   {
     id: {

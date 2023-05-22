@@ -4,7 +4,7 @@ const updatePasswordHandler = async (event) => {
 
   // Gather the data from the form elements on the page
   const password = document.querySelector("#updatePassword").value.trim();
-
+// update the password in the database
   const response = await fetch("/api/users/", {
     method: "PUT",
     body: JSON.stringify({ password }),

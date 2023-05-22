@@ -11,8 +11,8 @@ const regHandler = async (event) => {
     // Send the e-mail and password to the server
     // post to /login
 
-    // Send the e-mail and password to the server
-    // post to /login qithout fetch
+    // Send the first name, last name, e-mail and password to the server
+    // post to /register  fetch
 
     const response = await fetch("/api/users/register", {
       method: "POST",

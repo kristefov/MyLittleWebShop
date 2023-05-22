@@ -5,17 +5,10 @@
     <meta name="description" content="">
     <meta name="author" content="Rihards Mantejs">
     <title>MyLittleWebShop</title>
-
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/css/style.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-
-<meta name="theme-color" content="#712cf9">
-
-
-
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <meta name="theme-color" content="#712cf9">
   </head>
   <body>
     <div class="mainBoxx">
@@ -66,10 +59,7 @@
 <header data-bs-theme="dark" class="site-header sticky-top">
 {{> header }}
 </header>
-
-
 {{{ body }}}
-
 {{> footer }}
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -85,15 +75,12 @@
 {{#if logged_in}}
 <script src="/js/cart.js"></script>
 <script src="/js/search.js"></script>
-  <script src="/js/logout.js"></script>  
-  <script src="/js/update-email.js"></script>
-  <script src="/js/update-password.js"></script>
-    <script src="/js/deletecart.js"></script>
+<script src="/js/logout.js"></script>  
+<script src="/js/update-email.js"></script>
+<script src="/js/update-password.js"></script>
+<script src="/js/deletecart.js"></script>
 {{else}}
 <script src="/js/login.js"></script>
-    <script src="/js/register.js"></script>   
+<script src="/js/register.js"></script>   
 {{/if}}
-  
- 
-
 </body></html>

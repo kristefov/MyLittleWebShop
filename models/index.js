@@ -32,16 +32,16 @@ Tag.belongsToMany(Product, {
 Cart.belongsTo(User, {
   foreignKey: "user_id",
 });
-
+//user has one cart
 User.hasOne(Cart, {
   foreignKey: "user_id",
 });
-
+// cart belongs to many products (through CartProduct)
 Cart.belongsToMany(Product, {
   through: CartProduct,
   foreignKey: "cart_id",
 });
-
+// Products belongToMany Carts (through CartProduct)
 Product.belongsToMany(Cart, {
   through: CartProduct,
   foreignKey: "product_id",

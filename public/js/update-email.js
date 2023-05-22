@@ -4,7 +4,7 @@ const updateEmailHandler = async (event) => {
 
   // Gather the data from the form elements on the page
   const email = document.querySelector("#updateEmail").value.trim();
-
+// update the email in the database
   const response = await fetch("/api/users/", {
     method: "PUT",
     body: JSON.stringify({ email }),
