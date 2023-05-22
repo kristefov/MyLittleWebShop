@@ -6,21 +6,19 @@
   title="MyLittleWebSHop"
   style="display: inline-block; margin: 0 auto; max-width: 350px">
 
-## License
 
-- This application is covered under: [MIT License](https://choosealicense.com/licenses/mit)
 #
 ## Table of Contents
 
-- [Description](#Description)
-- [Table of Contents](#table-of-contents)
-- [Installation](#Installation)
-- [Usage](#Usage)
-- [Screenshots](#Screenshots)
-- [Walkthrough](#Walkthrough)
-- [Demo](#Demo)
-- [Link](#Link)
-- [Authors](#Authors)
+* [Description](#description)
+* [Table of Contents](#table-of-contents)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Walkthrough](#walkthrough)
+* [Demo](#demo)
+* [Link](#link)
+* [Authors](#authors)
+* [License](#license)
 #
 ## Description
 
@@ -73,21 +71,15 @@ In order to use the program you will need to clone the repository from GitHub pr
 ## How to Contribute
 For and suggestions or contributions you can reach me at my email address or you can clone to code and edit it the way it will suite you the best.
 #
-## Screenshots
-
-TBA
-
-#
 ## Walkthrough Video
 #
-[<img src="./assets/images/Screenshot 2023-05-22 at 02.44.27.png" width="50%">](https://drive.google.com/file/d/1vMS3BybLl7ypFnMPQamm1ncDs6lsTyFO/view?usp=sharing)
-
-TBA
-
+[<img src="./assets/images/Screenshot 2023-05-22 at 02.44.27.png" width="50%">](https://drive.google.com/file/d/1KBccUEZynfG1GfyiN6Vm40K3h0MgaXGY/view?usp=sharing)
+#
 ## Demo
 
-Insert gif or link to demo
+<img src="./assets/images/ezgif.com-gif-maker.gif" width="50%">
 
+#
 ## Link
 Link to repository:
 
@@ -97,7 +89,7 @@ Link to website:
 
 
 https://mylittlewebshop.herokuapp.com
-
+#
 ## Authors
 
 - [Kristiyan](https://github.com/kristiyantefov)
@@ -107,4 +99,9 @@ https://mylittlewebshop.herokuapp.com
 - [Abdishkur](https://github.com/Karbuuno)
 
 - [Ashley](https://github.com/Dovahkiin1993)
+
+#
+## License
+
+- This application is covered under: [MIT License](https://choosealicense.com/licenses/mit)
 
