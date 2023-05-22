@@ -40,8 +40,8 @@ const userData = await User.findByPk(req.session.user_id);
         },
       ],
       mode: 'payment',
-      success_url: 'http://localhost:3001/checkout/success',
-      cancel_url: 'http://localhost:3001/checkout/cancel',
+      success_url: 'https://mylittlewebshop.herokuapp.com/success',
+      cancel_url: 'https://mylittlewebshop.herokuapp.com/cancel',
     });
   
     res.redirect(303, stripeSession.url);
