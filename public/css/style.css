@@ -215,3 +215,13 @@ button.navbar-toggler {
 }
 
 
+main.container{
+  min-height: 120vh!important;
+  height: 100%!important;
+}
+.album.bg-body-tertiary {
+  padding-bottom: 56px;
+}
+footer.container.d-flex.footer.pt-5 {
+  margin-top: 56px;
+}

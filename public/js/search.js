@@ -38,13 +38,14 @@ jQuery('tr[class*="prod-item-"').each(function(){
   let searchText = jQuery(this).find('td.rowPrice').text().toString();
   search += parseFloat(searchText);
 });
-jQuery('th.totaled').text(search);
+jQuery('th.totaled').text(search.toFixed(2));
 
   var search2 = 0;
 jQuery('tr[class*="prod-item-"').each(function(){
   let search3 = 1;
   search2 += parseFloat(search3);
 });
+
 jQuery('th.counted').text(search2);
 jQuery('span.badge.bg-primary.rounded-pill').text(search2);
   }

@@ -1,6 +1,6 @@
 <div class="container">
-  <main>
-    <div class="py-5 text-center">
+  <main class="container py-2">
+    <div class=" text-center">
 
       <h2>Checkout form</h2>
 
@@ -13,10 +13,10 @@
           <span class="badge bg-primary rounded-pill">{{get_len cart}}</span>
         </h4>
         <table
-          class="table-primary table table-striped table-hover table-borderless table-dark align-middle"
+          class="table table-striped table-hover table-borderless table align-middle"
         >
           <thead
-            class="table-primary table table-striped table-hover table-borderless table-dark align-middle"
+            class="table table-striped table-hover table-borderless table align-middle"
           >
             <tr>
               <th>Product Image</th>
@@ -31,7 +31,7 @@
             {{#each cart.products as |product|}}
               <tr
                 class="prod-item-{{product.id}}
-                  table-primary table table-striped table-hover table-borderless table-dark align-middle"
+                  table table-striped table-hover table-borderless table align-middle"
               >
                 <td scope="row"><img
                     class="cartimage"
@@ -201,100 +201,6 @@
 
           <hr class="my-4" />
 
-          <h4 class="mb-3">Payment</h4>
-
-          <div class="my-3 d-flex">
-            <div class="form-check m-2">
-              <input
-                id="credit"
-                name="paymentMethod"
-                type="radio"
-                class="form-check-input"
-                checked=""
-                required=""
-              />
-              <label class="form-check-label" for="credit">Credit card</label>
-            </div>
-            <div class="form-check m-2">
-              <input
-                id="debit"
-                name="paymentMethod"
-                type="radio"
-                class="form-check-input"
-                required=""
-              />
-              <label class="form-check-label" for="debit">Debit card</label>
-            </div>
-            <div class="form-check m-2">
-              <input
-                id="paypal"
-                name="paymentMethod"
-                type="radio"
-                class="form-check-input"
-                required=""
-              />
-              <label class="form-check-label" for="paypal">PayPal</label>
-            </div>
-          </div>
-
-          <div class="row gy-3">
-            <div class="col-md-6">
-              <label for="cc-name" class="form-label">Name on card</label>
-              <input
-                type="text"
-                class="form-control"
-                id="cc-name"
-                placeholder=""
-                required=""
-              />
-              <small class="text-body-secondary">Full name as displayed on card</small>
-              <div class="invalid-feedback">
-                Name on card is required
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <label for="cc-number" class="form-label">Credit card number</label>
-              <input
-                type="text"
-                class="form-control"
-                id="cc-number"
-                placeholder=""
-                required=""
-              />
-              <div class="invalid-feedback">
-                Credit card number is required
-              </div>
-            </div>
-
-            <div class="col-md-3">
-              <label for="cc-expiration" class="form-label">Expiration</label>
-              <input
-                type="text"
-                class="form-control"
-                id="cc-expiration"
-                placeholder=""
-                required=""
-              />
-              <div class="invalid-feedback">
-                Expiration date required
-              </div>
-            </div>
-
-            <div class="col-md-3">
-              <label for="cc-cvv" class="form-label">CVV</label>
-              <input
-                type="text"
-                class="form-control"
-                id="cc-cvv"
-                placeholder=""
-                required=""
-              />
-              <div class="invalid-feedback">
-                Security code required
-              </div>
-            </div>
-          </div>
 
           <hr class="my-4" />
 

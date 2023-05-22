@@ -2,7 +2,7 @@
 const router = require("express").Router();
 const sequelizeOP = require("sequelize").Op;
 const { User, Cart, Product } = require("../../models");
-const stripe = require('stripe')('sk_test_26PHem9AhJZvU623DfE1x4sd');
+const stripe = require('stripe')('sk_test_51MtBULDRshRxSyZ6HHmEBs00ellZB7Vd7Bj4e1sl9MQGlvjb4HBwzwwHis55ZqJ1iFgYDns0TUYyhMadBmzcP7Zs00a1tcM42w');
 /*
 Fill out the payment details with the test card information:
 Enter 4242 4242 4242 4242 as the card number.
@@ -24,34 +24,34 @@ router.post('/create-checkout-session', async (req, res) => {
     
 console.log(cartItems);
 console.log(cartData);
+
+// loop over the cartItems, and add them to a new object that is line_Items with quantity and price and name.
+const theDataset = function(data){
+  const line_items = [];
+  for(let i = 0; i < data['products'].length; i++){
+    line_items.push({
+      price_data: {
+        currency: "gbp",
+        product_data: {
+          name: data['products'][i].product_name,
+        },
+        unit_amount: (data['products'][i].price * 100).toFixed(0),
+      },
+      quantity: '1',
+    });
+};
+return line_items;
+};
+
 const userData = await User.findByPk(req.session.user_id);
     const stripeSession = await stripe.checkout.sessions.create({
-        customer_details: [{
-    "address": null,//checkoutForm.address,
-    "email": userData.email,
-    "name": "" + userData.first_name+" " +userData.last_name,
-    "phone": null,//checkoutForm.phone,
-    "tax_exempt": "none",
-    "tax_ids": null
-  }],
-        customer_email: userData.email,
-      line_items: [
-        {
-          price_data: {
-            currency: 'usd',
-            product_data: {
-              name: 'T-shirt',
-            },
-            unit_amount: 2000,
-          },
-          quantity: 1,
-        },
-      ],
+     customer_email: userData.email,
+      line_items: theDataset(cartItems[0]),
       mode: 'payment',
       success_url: 'https://mylittlewebshop.herokuapp.com/checkout/success',
       cancel_url: 'https://mylittlewebshop.herokuapp.com/checkout/cancel',
     });
-  
+  //res.json();
     res.redirect(303, stripeSession.url);
   } catch (err) {
     console.error(err);

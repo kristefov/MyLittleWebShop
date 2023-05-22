@@ -1,4 +1,4 @@
-<main class="container">
+<main class="container py-5">
   <div
     class="col-md-12 d-flex align-right"
     style="
@@ -8,16 +8,16 @@
     justify-content: flex-end;
 "
   >
-    <a class="btn-lg btn btn-outline-secondary" href="/checkout">Checkout
+    <a class="btn-lg btn btn-outline-success" href="/checkout">Checkout
     </a></div>
   <div>
     <div class="table-responsive">
 
       <table
-        class="table-primary table table-striped table-hover table-borderless table-dark align-middle"
+        class="table  table-striped table-hover table-borderless table align-middle"
       >
         <thead
-          class="table-primary table table-striped table-hover table-borderless table-dark align-middle"
+          class="table  table-striped table-hover table-borderless table align-middle"
         >
           <tr>
             <th>Product Image</th>
@@ -32,7 +32,7 @@
         <tbody class="table-group-divider">
           {{#each cart.products as |product|}}
             <tr
-              class="table-primary table table-striped table-hover table-borderless table-dark align-middle"
+              class="table table table-striped table-hover table-borderless table align-middle"
             >
               <td scope="row"><img
                   class="cartimage"
@@ -41,9 +41,10 @@
               <td>{{product.product_name}}</td>
               <td>{{product.price}}</td>
               <td>{{product.stock}}</td>
-              <td><button
+              <td style="
+    text-align: center;"><button
                   data-product="{{product.id}}"
-                  class="btn btn-close clearCartBtn"
+                  class="btn btn-close btn-outline-secondary clearCartBtn"
                 ></button></td>
             </tr>
           {{/each}}
