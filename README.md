@@ -21,6 +21,8 @@
 * [Walkthrough](#walkthrough)
 * [Link](#link)
 * [Authors](#authors)
+* [Contributors](#contributors)
+* [Release](#release)
 * [License](#license)
 #
 #
@@ -103,6 +105,15 @@ https://mylittlewebshop.herokuapp.com
 - [Abdishakur](https://github.com/Karbuuno)
 
 - [Ashley](https://github.com/Dovahkiin1993)
+
+#
+## Contributors
+#
+-[Contributors](https://github.com/kristiyantefov/MyLittleWebShop/graphs/contributors)
+
+#
+## Release
+- [V1](https://github.com/kristiyantefov/MyLittleWebShop/releases/tag/v1)
 
 #
 ## License
