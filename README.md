@@ -77,7 +77,7 @@ For and suggestions or contributions you can reach me at my email address or you
 #
 ## Walkthrough Video
 #
-[<img src="./assets/images/Screenshot 2023-05-22 at 02.44.27.png" width="100%">](https://drive.google.com/file/d/1aFVgozaJIuLb-8XFchYPn1fdCZKAFNHz/view?usp=sharing)
+[<img src="./assets/images/Screenshot 2023-05-22 at 02.44.27.png" width="100%">](https://drive.google.com/file/d/1ch8CtDYHrvBv8RJ98gZ6bllKuQhbUpuK/view?usp=sharing)
 #
 
 
