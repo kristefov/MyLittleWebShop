@@ -109,7 +109,7 @@ https://mylittlewebshop.herokuapp.com
 #
 ## Contributors
 #
--[Contributors](https://github.com/kristiyantefov/MyLittleWebShop/graphs/contributors)
+- [Contributors](https://github.com/kristiyantefov/MyLittleWebShop/graphs/contributors)
 
 #
 ## Release
