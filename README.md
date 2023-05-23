@@ -23,6 +23,7 @@
 * [Authors](#authors)
 * [License](#license)
 #
+#
 ## Description
 
 Welcome to our LittleWebShop, where shopping meets convenience and quality! We are passionate about providing you with a seamless and enjoyable online shopping experience. Allow us to introduce ourselves and give you a glimpse into who we are.
