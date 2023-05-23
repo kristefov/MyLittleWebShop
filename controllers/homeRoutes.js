@@ -83,17 +83,22 @@ router.get("/update-p", withAuth, async (req, res) => {
   }
 });
 
-
 // render the checkout page
 router.get("/checkout/success", async (req, res) => {
   if (!req.session.logged_in) {
     res.redirect("/");
     return;
   } else {
-   try   {
+    try {
+      const userData = await User.findByPk(req.session.user_id);
       res.render("checkout_success", {
+        named: userData.first_name,
+        logged_in: req.session.logged_in,
+        user_id: req.session.user_id,
+        lasted: userData.last_name,
+        mailed: userData.email,
         requested: req,
-        responded: res
+        responded: res,
       });
     } catch (err) {
       res.status(500).json(err);
@@ -105,10 +110,16 @@ router.get("/checkout/cancel", async (req, res) => {
     res.redirect("/");
     return;
   } else {
-   try   {
+    try {
+      const userData = await User.findByPk(req.session.user_id);
       res.render("checkout_success", {
+        named: userData.first_name,
+        logged_in: req.session.logged_in,
+        user_id: req.session.user_id,
+        lasted: userData.last_name,
+        mailed: userData.email,
         requested: req,
-        responded: res
+        responded: res,
       });
     } catch (err) {
       res.status(500).json(err);
@@ -159,7 +170,7 @@ router.get("/cart", async (req, res) => {
         ],
       });
       const cart = cartData.get({ plain: true });
-console.log(cart);
+      console.log(cart);
       res.render("cart", {
         user_id: req.session.user_id,
         cart,
