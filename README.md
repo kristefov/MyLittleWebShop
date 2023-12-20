@@ -98,7 +98,7 @@ https://mylittlewebshop.herokuapp.com
 #
 ## Authors
 
-- [Kristiyan](https://github.com/kristiyantefov)
+- [Kristiyan](https://github.com/kristefov)
 
 - [Rihards](https://github.com/dexit)
 
@@ -109,11 +109,11 @@ https://mylittlewebshop.herokuapp.com
 #
 ## Contributors
 #
-- [Contributors](https://github.com/kristiyantefov/MyLittleWebShop/graphs/contributors)
+- [Contributors](https://github.com/kristefov/MyLittleWebShop/graphs/contributors)
 
 #
 ## Release
-- [V1](https://github.com/kristiyantefov/MyLittleWebShop/releases/tag/v1)
+- [V1](https://github.com/kristefov/MyLittleWebShop/releases/tag/v1)
 
 #
 ## License
